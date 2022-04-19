@@ -1,5 +1,8 @@
-package sweng.realrecipe;
 
+/**
+ *
+ * @author liberto_vincent
+ */
 public class User {
     String userName;
     String userEmail;
@@ -25,7 +28,7 @@ public class User {
 
         return fullName;
     }
-    public String getUserId(){
+    public String getUserID(){
         return userID;
     }
 }
