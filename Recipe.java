@@ -2,28 +2,28 @@ package sweng.realrecipe;
 
 public class Recipe {
     String name;
-    int recipeId;
+    int recipeID;
     String category;
     
-    public Recipe(String inName, int inId, String inCat){
-        name = inName;
-        recipeId = inId;
-        category = inCat;
+    public Recipe(String name, int recipeID, String category) {
+        this.name = name;
+        this.recipeID = recipeID;
+        this.category = category;
     }
     
-    public String getName(){
+    public String getName() {
         return name;
     }
     
-    public int getId(){
-        return recipeId;
+    public int getRecipeID(){
+        return recipeID;
     }
     
-    public String getCat(){
+    public String getCategory(){
         return category;
     }
     
     public String toString(){
-        return "Name: "+ name +"\nID: "+ recipeId +"\nCategory: "+ category;
+        return "Name: "+ name +"\nID: "+ recipeID +"\nCategory: "+ category;
     }
 }
