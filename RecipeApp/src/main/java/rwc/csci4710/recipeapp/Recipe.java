@@ -1,4 +1,4 @@
-package sweng.realrecipe;
+package rwc.csci4710.recipeapp;
 
 public class Recipe {
     String name;

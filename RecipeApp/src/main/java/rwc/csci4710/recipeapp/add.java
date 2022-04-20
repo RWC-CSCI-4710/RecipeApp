@@ -1,3 +1,5 @@
+package rwc.csci4710.recipeapp;
+
 //adding Recipes and Ingredients
 public class add
 {

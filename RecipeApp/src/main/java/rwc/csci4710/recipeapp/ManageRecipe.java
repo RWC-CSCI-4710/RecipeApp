@@ -1,3 +1,4 @@
+package rwc.csci4710.recipeapp;
 
 /**
  *
