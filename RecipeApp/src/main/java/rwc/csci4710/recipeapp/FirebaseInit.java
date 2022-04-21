@@ -9,7 +9,7 @@ import java.io.IOException;
 
 /**
  *
- * @author Gibbons
+ * @author Jared Gibbons
  */
 public class FirebaseInit {
     
