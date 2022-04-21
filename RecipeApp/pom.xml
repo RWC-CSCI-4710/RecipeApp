@@ -10,4 +10,11 @@
         <maven.compiler.target>16</maven.compiler.target>
         <exec.mainClass>rwc.csci4710.recipeapp.RecipeApp</exec.mainClass>
     </properties>
+    <dependencies>
+        <dependency>
+            <groupId>com.google.firebase</groupId>
+            <artifactId>firebase-admin</artifactId>
+            <version>8.1.0</version>
+        </dependency>
+    </dependencies>
 </project>
