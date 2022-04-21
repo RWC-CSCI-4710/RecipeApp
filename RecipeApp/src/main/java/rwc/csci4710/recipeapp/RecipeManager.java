@@ -10,7 +10,7 @@ import java.util.*;
 public class RecipeManager {
      /* Creation of Recipe Where the user inputs will be in the GUI class
     this is just the storing and sorting of the recipes
-    */
+    */ 
     
     ArrayList<Recipe> addRecipe = new ArrayList<Recipe>();
     
