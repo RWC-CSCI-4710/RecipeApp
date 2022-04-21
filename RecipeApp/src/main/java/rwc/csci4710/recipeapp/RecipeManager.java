@@ -1,6 +1,6 @@
 package rwc.csci4710.recipeapp;
 
-import java.util.ArrayList;
+import java.util.*;
 
 /**
  *
@@ -8,13 +8,18 @@ import java.util.ArrayList;
  * @author gbane_aboubakr
  */
 public class RecipeManager {
-    public static void addRecipe(User user, Recipe recipe) {
+     
+    
+    ArrayList<Recipe> addRecipe = new ArrayList<Recipe>();
+    
+    public void addRecipe(User user, Recipe recipe) {
+        
+        addRecipe.add(recipe);
+        
+        Recipe temp = addRecipe.get(0);
     
     }
-        
-    public static void addIngredient() {
-     
-    }
+    
 
     public void removeRecipe(User user, Recipe recipe) {
         // Remove recipe from database...
