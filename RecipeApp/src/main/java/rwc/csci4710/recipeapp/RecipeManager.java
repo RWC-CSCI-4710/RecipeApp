@@ -27,7 +27,7 @@ public class RecipeManager {
             }
             receipe.add(r);
         }
-    }
+        
     public static void addIngredient() {
      ArrayList<Ingredient> ingredient = new ArrayList<Ingredient>();
         
