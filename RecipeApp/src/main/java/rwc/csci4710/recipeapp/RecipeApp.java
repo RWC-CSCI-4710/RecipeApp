@@ -9,6 +9,8 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import org.apache.log4j.PropertyConfigurator;
+import javax.swing.*;
 
 /* 
  *@author Jared Gibbons 
@@ -17,10 +19,25 @@ import java.util.Map;
 public class RecipeApp {
 
     public static void main(String[] args) throws IOException {
-        System.out.print("Hello");
+        System.out.println("Hello");
+        
+        String text = JOptionPane.showInputDialog("Enter Name");
+        
+        System.out.println(text);
+        
         User user1 = new User("Jack", "jack@gmail.com", "Jack Smith", "AA11", "Redhawks#1");
         
+        String [] arrIngredients = {"Chicken", "Pasta"};
+        String [] arrInstructions = {"Boil pasta", "Grill chicken"};
+        
+        Recipe rec1 = new Recipe("Chicken Pasta", 473, "Entree", arrIngredients, arrInstructions);
+        
+        
         /*Attempting to connect to database*/
+        
+        String log4jConfPath = "/path/to/log4j.properties";
+        PropertyConfigurator.configure(log4jConfPath);
+        
         FileInputStream serviceAccount =
         new FileInputStream("C:\\Users\\chuck\\Documents\\RobertsWork\\Junior\\Spring\\SWEng\\RecipeApp\\RecipeApp\\ADMNKey.json\\");
 
@@ -34,6 +51,7 @@ public class RecipeApp {
         
         DatabaseReference ref = FirebaseDatabase.getInstance()
             .getReference("restricted_access/secret_document");
+        
         DatabaseReference usersRef = ref.child("users");
         
         
@@ -42,8 +60,7 @@ public class RecipeApp {
         
         usersRef.setValueAsync(users);
         
-        System.out.println(user1.getUserID());
+        System.out.println(rec1.toString());
         
     }
-    
 }
