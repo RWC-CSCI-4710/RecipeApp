@@ -7,14 +7,12 @@ package rwc.csci4710.recipeapp;
 public class User {
     String userName;
     String userEmail;
-    String fullName;
-    String userID;
+    int userID;
     String password;
     
-    public User(String userName, String userEmail, String fullName, String userID, String password) {
+    public User(String userName, String userEmail, int userID, String password) {
         this.userName = userName;
         this.userEmail = userEmail;
-        this.fullName = fullName;
         this.userID = userID;
         this.password = password;
     }
@@ -25,11 +23,7 @@ public class User {
     public String getUserEmail() {
         return userEmail;
     }
-    public String getFullName() {
-
-        return fullName;
-    }
-    public String getUserID() {
+    public int getUserID() {
         return userID;
     }
 }

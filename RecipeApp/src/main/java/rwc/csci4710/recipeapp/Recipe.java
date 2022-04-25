@@ -8,15 +8,13 @@ public class Recipe {
     private String category;
     private String [] ingredients;
     private String [] instructions;
-    private int prep;
     
-    public Recipe(String name, int recipeID, String category, String [] ingredients, String [] instructions, int prep) {
+    public Recipe(String name, int recipeID, String category, String [] ingredients, String [] instructions) {
         this.name = name;
         this.recipeID = recipeID;
         this.category = category;
         this.ingredients = ingredients;
         this.instructions = instructions;
-        this.prep = prep;
     }
     
     /*Accessors*/

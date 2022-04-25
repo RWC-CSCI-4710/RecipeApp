@@ -19,12 +19,12 @@ public class RecipeApp {
         FirebaseInit databaseLink = new FirebaseInit();
         databaseLink.initialize();
         
-        User user1 = new User("Jack", "jack@gmail.com", "Jack Smith", "AA11", "Redhawks#1");
+        User user1 = new User("JackBoy7", "jack@gmail.com", 123, "Redhawks#1");
         
         String [] arrIngredients = {"Chicken", "Pasta"};
         String [] arrInstructions = {"Boil pasta", "Grill chicken"};
         
-        Recipe rec1 = new Recipe("Chicken Pasta", 473, "Entree", arrIngredients, arrInstructions, 90);
+        Recipe rec1 = new Recipe("Chicken Pasta", 473, "Entree", arrIngredients, arrInstructions);
         
         System.out.println("Here Works!!");
     }
