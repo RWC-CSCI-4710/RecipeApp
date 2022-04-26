@@ -31,7 +31,7 @@ public class Recipe {
         return category;
     }
     public String getIngredients(){
-        return ingredients
+        return ingredients;
     }
     
     /* Mutators */
