@@ -30,6 +30,9 @@ public class Recipe {
     public String getCategory(){
         return category;
     }
+    public String getIngredients(){
+        return ingredients
+    }
     
     /* Mutators */
     
