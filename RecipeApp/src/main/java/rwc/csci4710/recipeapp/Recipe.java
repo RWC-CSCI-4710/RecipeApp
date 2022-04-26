@@ -6,10 +6,10 @@ public class Recipe {
     private String name;
     private final int recipeID;
     private String category;
-    private String [] ingredients;
-    private String [] instructions;
+    private String[] ingredients;
+    private String[] instructions;
     
-    public Recipe(String name, int recipeID, String category, String [] ingredients, String [] instructions) {
+    public Recipe(String name, int recipeID, String category, String[] ingredients, String[] instructions) {
         this.name = name;
         this.recipeID = recipeID;
         this.category = category;
@@ -17,7 +17,7 @@ public class Recipe {
         this.instructions = instructions;
     }
     
-    /*Accessors*/
+    /* Accessors */
     
     public String getName() {
         return name;
@@ -31,7 +31,7 @@ public class Recipe {
         return category;
     }
     
-    /*Mutators*/
+    /* Mutators */
     
     public void setName(String newName){
         name = newName;
@@ -48,13 +48,11 @@ public class Recipe {
     public void setInstructions(String [] newInstructions){
         instructions = newInstructions;
     }
+        
+    /* Other */
     
+    @Override
     public String toString(){
         return "Name: "+ name +"\nID: "+ recipeID +"\nCategory: "+ category + "\nIngredients" + Arrays.toString(ingredients) + "\nInstructions" + Arrays.toString(instructions);
-    }
-    
-    public String[] addIngredient() {
-        
-        return ingredients;
     }
 }

@@ -1,6 +1,6 @@
 package rwc.csci4710.recipeapp;
 
-import java.util.*;
+import java.util.ArrayList;
 
 /**
  *
@@ -12,7 +12,7 @@ public class RecipeManager {
     this is just the storing and sorting of the recipes
     */ 
     
-    ArrayList<Recipe> newRecipe = new ArrayList<Recipe>();
+    ArrayList<Recipe> newRecipe = new ArrayList<>();
     
     public void addRecipe(User user, Recipe recipe) {
         
