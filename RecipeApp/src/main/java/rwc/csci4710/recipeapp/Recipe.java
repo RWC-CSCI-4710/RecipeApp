@@ -30,7 +30,7 @@ public class Recipe {
     public String getCategory(){
         return category;
     }
-    public String getIngredients(){
+    public String[] getIngredients(){
         return ingredients;
     }
     
@@ -57,5 +57,9 @@ public class Recipe {
     @Override
     public String toString(){
         return "Name: "+ name +"\nID: "+ recipeID +"\nCategory: "+ category + "\nIngredients" + Arrays.toString(ingredients) + "\nInstructions" + Arrays.toString(instructions);
+    }
+
+    void setIngredients(String ingredients) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }
