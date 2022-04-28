@@ -33,6 +33,11 @@ public class Recipe {
         return ingredients;
     }
     
+    public String[] getInstructions(){
+        return instructions;
+    }
+    
+    
     /* Mutators */
     
     public void setName(String newName){
