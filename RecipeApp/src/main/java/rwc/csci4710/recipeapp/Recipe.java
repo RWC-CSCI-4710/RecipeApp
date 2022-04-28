@@ -6,13 +6,32 @@ package rwc.csci4710.recipeapp;
 
 import java.util.Arrays;
 
-public class Recipe {
+public class Recipe {    
     private String name;
-    private String category;
+    private Category category;
     private String[] ingredients;
     private String[] instructions;
     
-    public Recipe(String name, String category, String[] ingredients, String[] instructions) {
+    public enum Category {
+        BREAKFAST("Breakfast"),
+        LUNCH("Lunch"),
+        DINNER("Dinner"),
+        APPETIZER_SNACK("Appetizer or Snack"),
+        DESSERT("Dessert"),
+        DRINK("Drink");
+        
+        private final String label;
+        
+        Category(String label) {
+            this.label = label;
+        }
+        
+        public String getLabel() {
+            return label;
+        }
+    }
+    
+    public Recipe(String name, Category category, String[] ingredients, String[] instructions) {
         this.name = name;
         this.category = category;
         this.ingredients = ingredients;
@@ -25,12 +44,16 @@ public class Recipe {
         return name;
     }
     
-    public String getCategory(){
+    public Category getCategory() {
         return category;
     }
 
-    public String[] getIngredients(){
+    public String[] getIngredients() {
         return ingredients;
+    }
+    
+    public String[] getInstructions() {
+        return instructions;
     }
     
     /* Mutators */
@@ -39,7 +62,7 @@ public class Recipe {
         name = newName;
     }
     
-    public void setCategory(String newCategory){
+    public void setCategory(Category newCategory){
         category = newCategory;
     }
     
