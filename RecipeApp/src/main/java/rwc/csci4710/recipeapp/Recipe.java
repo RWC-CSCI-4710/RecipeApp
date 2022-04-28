@@ -1,15 +1,18 @@
 package rwc.csci4710.recipeapp;
 
+/* Gibbons_Jared
+
+*/
+
 import java.util.Arrays;
 
 public class Recipe {    
     private String name;
-    private final int recipeID;
     private Category category;
     private String[] ingredients;
     private String[] instructions;
     
-    enum Category {
+    public enum Category {
         BREAKFAST("Breakfast"),
         LUNCH("Lunch"),
         DINNER("Dinner"),
@@ -24,9 +27,8 @@ public class Recipe {
         }
     }
     
-    public Recipe(String name, int recipeID, Category category, String[] ingredients, String[] instructions) {
+    public Recipe(String name, Category category, String[] ingredients, String[] instructions) {
         this.name = name;
-        this.recipeID = recipeID;
         this.category = category;
         this.ingredients = ingredients;
         this.instructions = instructions;
@@ -38,12 +40,16 @@ public class Recipe {
         return name;
     }
     
-    public int getRecipeID(){
-        return recipeID;
+    public Category getCategory() {
+        return category;
+    }
+
+    public String[] getIngredients() {
+        return ingredients;
     }
     
-    public Category getCategory(){
-        return category;
+    public String[] getInstructions() {
+        return instructions;
     }
     
     /* Mutators */
@@ -68,6 +74,10 @@ public class Recipe {
     
     @Override
     public String toString(){
-        return "Name: "+ name +"\nID: "+ recipeID +"\nCategory: "+ category + "\nIngredients" + Arrays.toString(ingredients) + "\nInstructions" + Arrays.toString(instructions);
+        return "Name: "+ name +"\nCategory: "+ category + "\nIngredients" + Arrays.toString(ingredients) + "\nInstructions" + Arrays.toString(instructions);
+    }
+
+    void setIngredients(String ingredients) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }
