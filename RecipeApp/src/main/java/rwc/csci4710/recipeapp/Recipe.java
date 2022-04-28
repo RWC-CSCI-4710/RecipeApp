@@ -9,7 +9,7 @@ import java.util.Arrays;
 public class Recipe {    
     private String name;
     private Category category;
-    private String[] ingredients;
+    private Ingredient[] ingredients;
     private String[] instructions;
     
     public enum Category {
@@ -31,7 +31,7 @@ public class Recipe {
         }
     }
     
-    public Recipe(String name, Category category, String[] ingredients, String[] instructions) {
+    public Recipe(String name, Category category, Ingredient[] ingredients, String[] instructions) {
         this.name = name;
         this.category = category;
         this.ingredients = ingredients;
@@ -48,7 +48,7 @@ public class Recipe {
         return category;
     }
 
-    public String[] getIngredients() {
+    public Ingredient[] getIngredients() {
         return ingredients;
     }
     
@@ -66,7 +66,7 @@ public class Recipe {
         category = newCategory;
     }
     
-    public void setIngredients(String [] newIngredients){
+    public void setIngredients(Ingredient[] newIngredients){
         ingredients = newIngredients;
     }
     
