@@ -2,14 +2,29 @@ package rwc.csci4710.recipeapp;
 
 import java.util.Arrays;
 
-public class Recipe {
+public class Recipe {    
     private String name;
     private final int recipeID;
-    private String category;
+    private Category category;
     private String[] ingredients;
     private String[] instructions;
     
-    public Recipe(String name, int recipeID, String category, String[] ingredients, String[] instructions) {
+    enum Category {
+        BREAKFAST("Breakfast"),
+        LUNCH("Lunch"),
+        DINNER("Dinner"),
+        APPETIZER_SNACK("Appetizer or Snack"),
+        DESSERT("Dessert"),
+        DRINK("Drink");
+        
+        public final String label;
+        
+        Category(String label) {
+            this.label = label;
+        }
+    }
+    
+    public Recipe(String name, int recipeID, Category category, String[] ingredients, String[] instructions) {
         this.name = name;
         this.recipeID = recipeID;
         this.category = category;
@@ -27,7 +42,7 @@ public class Recipe {
         return recipeID;
     }
     
-    public String getCategory(){
+    public Category getCategory(){
         return category;
     }
     
@@ -37,7 +52,7 @@ public class Recipe {
         name = newName;
     }
     
-    public void setCategory(String newCategory){
+    public void setCategory(Category newCategory){
         category = newCategory;
     }
     
