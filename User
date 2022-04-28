@@ -1,0 +1,41 @@
+package rwc.csci4710.recipeapp;
+
+/**
+ *
+ * @author liberto_vincent
+ */
+public class User {
+    String userName;
+    String userEmail;
+    String fullName;
+    String userID;
+    String password;
+    String[] userRecipe;
+    
+    public User(String userName, String userEmail, String fullName, String userID, String password, String[] userRecipe) {
+        this.userName = userName;
+        this.userEmail = userEmail;
+        this.fullName = fullName;
+        this.userID = userID;
+        this.password = password;
+        this.userRecipe = userRecipe;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+    public String getUserEmail() {
+        return userEmail;
+    }
+    public String getFullName() {
+
+        return fullName;
+    }
+    public String getUserID() {
+        return userID;
+    }
+    public String[] getUserRecipe(){      
+        System.out.println(userName +" "+ userRecipe); //Test 
+        return userRecipe;
+    }
+}
