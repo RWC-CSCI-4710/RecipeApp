@@ -3,7 +3,7 @@ package rwc.csci4710.recipeapp;
 import java.util.ArrayList;
 
 /**
- *
+ * @author Gibbons_Jared
  * @author liberto_vincent
  * @author gbane_aboubakr
  */
@@ -17,7 +17,6 @@ public class RecipeManager {
     public void addRecipe(User user, Recipe recipe) {
         
         newRecipe.add(recipe);
-        
         Recipe temp = newRecipe.get(0);
     
     }
@@ -39,7 +38,7 @@ public class RecipeManager {
         String category = changedRecipe.getCategory();
         oldRecipe.setCategory(category);
         
-        String ingredients = changedRecipe.getIngredients();
+        String [] ingredients = changedRecipe.getIngredients();
         oldRecipe.setIngredients(ingredients);
     }
 }

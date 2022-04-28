@@ -1,17 +1,19 @@
 package rwc.csci4710.recipeapp;
 
+/* Gibbons_Jared
+
+*/
+
 import java.util.Arrays;
 
 public class Recipe {
     private String name;
-    private final int recipeID;
     private String category;
     private String[] ingredients;
     private String[] instructions;
     
-    public Recipe(String name, int recipeID, String category, String[] ingredients, String[] instructions) {
+    public Recipe(String name, String category, String[] ingredients, String[] instructions) {
         this.name = name;
-        this.recipeID = recipeID;
         this.category = category;
         this.ingredients = ingredients;
         this.instructions = instructions;
@@ -23,14 +25,10 @@ public class Recipe {
         return name;
     }
     
-    public int getRecipeID(){
-        return recipeID;
-    }
-    
     public String getCategory(){
         return category;
     }
-    public String getIngredients(){
+    public String [] getIngredients(){
         return ingredients;
     }
     
@@ -56,6 +54,6 @@ public class Recipe {
     
     @Override
     public String toString(){
-        return "Name: "+ name +"\nID: "+ recipeID +"\nCategory: "+ category + "\nIngredients" + Arrays.toString(ingredients) + "\nInstructions" + Arrays.toString(instructions);
+        return "Name: "+ name +"\nCategory: "+ category + "\nIngredients" + Arrays.toString(ingredients) + "\nInstructions" + Arrays.toString(instructions);
     }
 }

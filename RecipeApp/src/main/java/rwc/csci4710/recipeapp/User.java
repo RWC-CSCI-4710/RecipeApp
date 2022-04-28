@@ -5,16 +5,15 @@ package rwc.csci4710.recipeapp;
  * @author liberto_vincent
  */
 public class User {
-    String userName;
+    private String userName;
     String userEmail;
-    int userID;
-    String password;
+    private int userID;
+    String userPassword;
     
-    public User(String userName, String userEmail, int userID, String password) {
+    public User(String userName, String userEmail, String password) {
         this.userName = userName;
         this.userEmail = userEmail;
-        this.userID = userID;
-        this.password = password;
+        this.userPassword = password;
     }
 
     public String getUserName() {
@@ -25,5 +24,9 @@ public class User {
     }
     public int getUserID() {
         return userID;
+    }
+    
+    public String toString(){
+        return "Username: "+ userName +"\nEmail: "+ userEmail +"\nPassword: "+ userPassword;
     }
 }

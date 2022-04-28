@@ -9,6 +9,7 @@ package rwc.csci4710.recipeapp;
 /**
  *
  * @author Ortiz_Marcos
+ * @author Gibbons_Jared
  */
 public class RegisterFrame extends javax.swing.JFrame {
 
@@ -144,8 +145,8 @@ public class RegisterFrame extends javax.swing.JFrame {
     private void btnRegisterMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegisterMousePressed
         /*validate(); */
         
-        User user1 = new User(inputUsername.getText(), inputEmail.getText(), 321, inputPassword.getText());
-        System.out.print(user1.getUserEmail());
+        User user1 = new User(inputUsername.getText(), inputEmail.getText(),inputPassword.getText());
+        UserManager.registerUser(user1);
     }//GEN-LAST:event_btnRegisterMousePressed
 
     private void inputEmailMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inputEmailMousePressed
