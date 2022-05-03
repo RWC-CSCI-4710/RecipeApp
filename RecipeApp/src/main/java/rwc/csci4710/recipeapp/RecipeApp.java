@@ -15,9 +15,6 @@ public class RecipeApp {
         
         System.out.println(text);
         
-        FirebaseInit databaseLink = new FirebaseInit();
-        databaseLink.initialize();
-        
         System.out.println("Here Works!!");
     }
 }
