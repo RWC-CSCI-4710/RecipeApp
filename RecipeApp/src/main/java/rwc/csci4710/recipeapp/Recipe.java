@@ -39,30 +39,33 @@ public class Recipe {
     
     /* Mutators */
     
-    public void setName(String newName){
+    public void setName(String newName) {
         name = newName;
     }
     
-    public void setCategory(Category newCategory){
+    public void setCategory(Category newCategory) {
         category = newCategory;
     }
     
-    public void setIngredients(Ingredient[] newIngredients){
+    public void setIngredients(Ingredient[] newIngredients) {
         ingredients = newIngredients;
     }
     
-    public void setInstructions(String [] newInstructions){
+    public void setInstructions(String [] newInstructions) {
         instructions = newInstructions;
     }
         
     /* Other */
     
     @Override
-    public String toString(){
-        return "Name: "+ name +"\nCategory: "+ category + "\nIngredients" + Arrays.toString(ingredients) + "\nInstructions" + Arrays.toString(instructions);
+    public String toString() {
+        return "Name: "+ name
+                + "\nCategory: " + category
+                + "\nIngredients: " + Arrays.toString(ingredients)
+                + "\nInstructions" + Arrays.toString(instructions);
     }
 
     void setIngredients(String ingredients) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }

@@ -8,7 +8,6 @@ import javax.swing.*;
  */
 
 public class RecipeApp {
-
     public static void main(String[] args) throws IOException {
         System.out.println("Hello");
         
