@@ -35,10 +35,10 @@ public class RecipeManager {
         String name = changedRecipe.getName();
         oldRecipe.setName(name);
         
-        String category = changedRecipe.getCategory();
+        Category category = changedRecipe.getCategory();
         oldRecipe.setCategory(category);
         
-        String [] ingredients = changedRecipe.getIngredients();
+        Ingredient[] ingredients = changedRecipe.getIngredients();
         oldRecipe.setIngredients(ingredients);
          
         String[] instructions = changedRecipe.getInstructions();
