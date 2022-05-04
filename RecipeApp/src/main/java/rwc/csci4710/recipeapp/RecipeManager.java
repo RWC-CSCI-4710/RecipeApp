@@ -1,7 +1,6 @@
 package rwc.csci4710.recipeapp;
 
 import java.util.ArrayList;
-import rwc.csci4710.recipeapp.Recipe.Category;
 
 /**
  * @author Gibbons_Jared
@@ -39,7 +38,7 @@ public class RecipeManager {
         Category cat = changedRecipe.getCategory();
         oldRecipe.setCategory(cat);
         
-        String [] ingredients = changedRecipe.getIngredients();
+        Ingredient[] ingredients = changedRecipe.getIngredients();
         oldRecipe.setIngredients(ingredients);
          
         String[] instructions = changedRecipe.getInstructions();
