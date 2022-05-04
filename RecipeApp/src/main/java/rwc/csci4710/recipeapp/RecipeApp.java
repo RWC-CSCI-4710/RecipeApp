@@ -1,22 +1,18 @@
 package rwc.csci4710.recipeapp;
 
 import java.io.IOException;
-import javax.swing.*;
 
 /**
  * RecipeApp.java
  * 
- * @author Jared Gibbons 
+ * @author Jared Gibbons
+ * @author Matt Wurl
  */
 
 public class RecipeApp {
     public static void main(String[] args) throws IOException {
-        System.out.println("Hello");
+        RegisterFrame registerFrame = new RegisterFrame();
         
-        String text = JOptionPane.showInputDialog("Enter Name");
-        
-        System.out.println(text);
-        
-        System.out.println("Here Works!!");
+        registerFrame.setVisible(true);
     }
 }
