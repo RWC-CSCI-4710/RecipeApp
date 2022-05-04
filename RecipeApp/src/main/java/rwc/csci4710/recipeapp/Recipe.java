@@ -1,11 +1,13 @@
 package rwc.csci4710.recipeapp;
 
-/* Gibbons_Jared
-
-*/
-
 import java.util.Arrays;
 
+/**
+ * Recipe.java
+ * 
+ * @author Gibbons_Jared
+ * @author Matt Wurl
+ */
 public class Recipe {    
     private String name;
     private Category category;
@@ -63,9 +65,5 @@ public class Recipe {
                 + "\nCategory: " + category
                 + "\nIngredients: " + Arrays.toString(ingredients)
                 + "\nInstructions" + Arrays.toString(instructions);
-    }
-
-    void setIngredients(String ingredients) {
-        throw new UnsupportedOperationException("Not supported yet.");
     }
 }

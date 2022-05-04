@@ -1,9 +1,10 @@
 package rwc.csci4710.recipeapp;
 
 /**
- *
- * @author mattx
+ * UserManager.java
+ * 
  * @author Gibbons
+ * @author Matt Wurl
  */
 public class UserManager {
     public static void registerUser(User inUser) {

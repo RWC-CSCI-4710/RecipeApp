@@ -3,6 +3,8 @@ package rwc.csci4710.recipeapp;
 import java.util.ArrayList;
 
 /**
+ * RecipeManager.java
+ * 
  * @author Gibbons_Jared
  * @author liberto_vincent
  * @author gbane_aboubakr

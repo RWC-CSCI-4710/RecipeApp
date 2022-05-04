@@ -1,8 +1,9 @@
 package rwc.csci4710.recipeapp;
 
 /**
- *
- * @author mattx
+ * Ingredient.java
+ * 
+ * @author Matt Wurl
  */
 public class Ingredient {
     private String name;

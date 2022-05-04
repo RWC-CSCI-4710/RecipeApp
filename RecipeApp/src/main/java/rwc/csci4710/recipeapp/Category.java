@@ -1,8 +1,9 @@
 package rwc.csci4710.recipeapp;
 
 /**
- *
- * @author mattx
+ * Category.java
+ * 
+ * @author Matt Wurl
  */
 public enum Category {
     BREAKFAST("Breakfast"),

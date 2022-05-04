@@ -3,8 +3,10 @@ package rwc.csci4710.recipeapp;
 import java.io.IOException;
 import javax.swing.*;
 
-/* 
- *@author Jared Gibbons 
+/**
+ * RecipeApp.java
+ * 
+ * @author Jared Gibbons 
  */
 
 public class RecipeApp {
