@@ -5,28 +5,35 @@ package rwc.csci4710.recipeapp;
  * @author liberto_vincent
  */
 public class User {
-    private String userName;
-    String userEmail;
-    private int userID;
-    String userPassword;
+    private String username;
+    private String email;
+    private String password;
+    private int id;
     
-    public User(String userName, String userEmail, String password) {
-        this.userName = userName;
-        this.userEmail = userEmail;
-        this.userPassword = password;
+    public User(String username, String email, String password, int id) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.id = id;
     }
 
-    public String getUserName() {
-        return userName;
+    /* Accessors */
+    
+    public String getUsername() {
+        return username;
     }
-    public String getUserEmail() {
-        return userEmail;
+    public String getEmail() {
+        return email;
     }
-    public int getUserID() {
-        return userID;
+    public int getID() {
+        return id;
     }
     
-    public String toString(){
-        return "Username: "+ userName +"\nEmail: "+ userEmail +"\nPassword: "+ userPassword;
+    /* Other */
+    
+    @Override
+    public String toString() {
+        return "Username: "+ username
+                + "\nEmail: "+ email;
     }
 }
