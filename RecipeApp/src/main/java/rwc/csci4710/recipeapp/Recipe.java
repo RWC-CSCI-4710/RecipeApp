@@ -51,7 +51,7 @@ public class Recipe {
         ingredients = newIngredients;
     }
     
-    public void setInstructions(String [] newInstructions) {
+    public void setInstructions(Instructions [] newInstructions) {
         instructions = newInstructions;
     }
         
