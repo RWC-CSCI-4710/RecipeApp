@@ -43,7 +43,7 @@ public class RecipeManager {
         Ingredient[] ingredients = changedRecipe.getIngredients();
         oldRecipe.setIngredients(ingredients);
          
-        String[] instructions = changedRecipe.getInstructions();
+        Instruction[] instructions = changedRecipe.getInstructions();
         oldRecipe.setInstructions(instructions);
     }
 }
