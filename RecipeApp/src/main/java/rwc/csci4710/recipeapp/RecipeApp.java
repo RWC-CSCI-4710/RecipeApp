@@ -1,6 +1,7 @@
 package rwc.csci4710.recipeapp;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 /**
  * RecipeApp.java
@@ -10,8 +11,9 @@ import java.io.IOException;
  */
 
 public class RecipeApp {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, SQLException {
         RegisterFrame registerFrame = new RegisterFrame();
+        
         
         registerFrame.setVisible(true);
     }

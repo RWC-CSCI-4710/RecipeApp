@@ -12,9 +12,10 @@ public class DatabaseManager {
     private Connection conn;
     private ResultSet rs;
     
-    public DatabaseManager(){
+    public void connectDatabase() throws SQLException{
+        conn = DriverManager.getConnection("jdbc:sharepoint://RecipeAppDB.accdb");
         try{
-            conn = DriverManager.getConnection("jdbc:ucanaccess://FantasyPrem.accdb");
+            conn = DriverManager.getConnection("jdbc:ucanaccess://RecipeAppDB.accdb");
             System.out.println("Connection success");
         }catch (SQLException ex){
             System.out.println("Connection failed");
