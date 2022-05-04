@@ -1,15 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package rwc.csci4710.recipeapp;
 
 /**
- *
- * @author Ortiz_Marcos
+ * RegisterFrame.java
+ * 
  * @author Gibbons_Jared
+ * @author Matt Wurl
+ * @author Ortiz_Marcos
  */
 public class RegisterFrame extends javax.swing.JFrame {
 
@@ -145,8 +141,6 @@ public class RegisterFrame extends javax.swing.JFrame {
     private void btnRegisterMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegisterMousePressed
         /*validate(); */
         
-        User user1 = new User(inputUsername.getText(), inputEmail.getText(),inputPassword.getText());
-        UserManager.registerUser(user1);
     }//GEN-LAST:event_btnRegisterMousePressed
 
     private void inputEmailMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inputEmailMousePressed

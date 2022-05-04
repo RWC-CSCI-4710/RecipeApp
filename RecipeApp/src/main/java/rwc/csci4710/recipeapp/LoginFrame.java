@@ -1,8 +1,8 @@
-
 package rwc.csci4710.recipeapp;
 
 /**
- *
+ * LoginFrame.java
+ * 
  * @author Ortiz_Marcos
  */
 public class LoginFrame extends javax.swing.JFrame {
