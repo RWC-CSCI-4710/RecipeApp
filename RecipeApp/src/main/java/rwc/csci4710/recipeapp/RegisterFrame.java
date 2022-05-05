@@ -13,7 +13,7 @@ import java.util.regex.Pattern;
  */
 public class RegisterFrame extends javax.swing.JFrame {
 
-    private boolean flagN = false, flagP = false;
+    private boolean flagN, flagE, flagP, flagU = false;
     
     public RegisterFrame() {
         initComponents();
@@ -165,8 +165,10 @@ public class RegisterFrame extends javax.swing.JFrame {
         /*validate(); */
         valName();
         valPass();
+        valEmail();
+        valUser();
         
-        if(flagN == true && flagP == true){
+        if(flagN == true && flagP == true && flagE == true && flagU ==true){
             new LoginFrame().setVisible(true);
             this.dispose();
         }
@@ -237,7 +239,47 @@ public class RegisterFrame extends javax.swing.JFrame {
             flagP = true;
         }
     }
-            
+    
+    public void valEmail(){
+        String email = inputEmail.getText();
+        
+        if(email.equals("") || email.equals("[Enter Password]")){
+            inputEmail.setBackground(Color.RED);
+            errEmail.setText("Input Required");
+            errEmail.setVisible(true);
+            flagE = false;
+        }
+        
+        else if(!inputEmail.getText().contains("@") || !inputEmail.getText().contains(".")){
+            inputEmail.setBackground(Color.RED);
+            errEmail.setText("Not a valid email");
+            errEmail.setVisible(true);
+            flagE = false;
+        }
+        
+        else{
+            errEmail.setVisible(false);
+            inputEmail.setBackground(Color.WHITE);
+            flagE = true;
+        }
+    }
+    
+    public void valUser(){
+        String username = inputUsername.getText();
+        
+        if(username.equals("") || username.equals("[Enter Username]")){
+            inputUsername.setBackground(Color.RED);
+            errUsername.setText("Input Required");
+            errUsername.setVisible(true);
+            flagU = false;
+        }
+        else{
+            errUsername.setVisible(false);
+            inputUsername.setBackground(Color.WHITE);
+            flagU = true;
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */
