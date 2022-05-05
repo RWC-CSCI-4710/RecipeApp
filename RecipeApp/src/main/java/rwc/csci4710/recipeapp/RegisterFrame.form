@@ -33,7 +33,7 @@
           <Group type="102" alignment="1" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace pref="164" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="btnRegister" min="-2" max="-2" attributes="0"/>
                           <Component id="lblRegister" alignment="1" min="-2" pref="70" max="-2" attributes="0"/>
@@ -50,10 +50,10 @@
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="inputName" max="32767" attributes="0"/>
-                          <Component id="inputEmail" max="32767" attributes="0"/>
-                          <Component id="inputUsername" alignment="0" max="32767" attributes="0"/>
-                          <Component id="inputPassword" alignment="0" max="32767" attributes="0"/>
+                          <Component id="inputName" min="-2" pref="159" max="-2" attributes="0"/>
+                          <Component id="inputEmail" min="-2" pref="159" max="-2" attributes="0"/>
+                          <Component id="inputUsername" alignment="0" min="-2" pref="159" max="-2" attributes="0"/>
+                          <Component id="inputPassword" alignment="0" min="-2" pref="159" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -62,7 +62,7 @@
                   <Component id="errName" min="-2" max="-2" attributes="0"/>
                   <Component id="errEmail" min="-2" max="-2" attributes="0"/>
                   <Component id="errUsername" min="-2" max="-2" attributes="0"/>
-                  <Component id="errPassword" min="-2" max="-2" attributes="0"/>
+                  <Component id="errPass" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="103" max="-2" attributes="0"/>
           </Group>
@@ -95,7 +95,7 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="inputPassword" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblPassword" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="errPassword" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="errPass" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
               <Component id="btnRegister" min="-2" max="-2" attributes="0"/>
@@ -173,7 +173,7 @@
         <Property name="text" type="java.lang.String" value="jLabel2"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="errPassword">
+    <Component class="javax.swing.JLabel" name="errPass">
       <Properties>
         <Property name="text" type="java.lang.String" value="jLabel2"/>
       </Properties>

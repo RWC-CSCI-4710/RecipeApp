@@ -13,7 +13,7 @@ import java.util.regex.Pattern;
  */
 public class RegisterFrame extends javax.swing.JFrame {
 
-    private boolean flagN = false;
+    private boolean flagN = false, flagP = false;
     
     public RegisterFrame() {
         initComponents();
@@ -37,7 +37,7 @@ public class RegisterFrame extends javax.swing.JFrame {
         errName = new javax.swing.JLabel();
         errEmail = new javax.swing.JLabel();
         errUsername = new javax.swing.JLabel();
-        errPassword = new javax.swing.JLabel();
+        errPass = new javax.swing.JLabel();
 
         jLabel1.setText("jLabel1");
 
@@ -90,7 +90,7 @@ public class RegisterFrame extends javax.swing.JFrame {
 
         errUsername.setText("jLabel2");
 
-        errPassword.setText("jLabel2");
+        errPass.setText("jLabel2");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -99,7 +99,7 @@ public class RegisterFrame extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(164, Short.MAX_VALUE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(btnRegister)
                             .addComponent(lblRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -112,16 +112,16 @@ public class RegisterFrame extends javax.swing.JFrame {
                             .addComponent(lblPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(inputName)
-                            .addComponent(inputEmail)
-                            .addComponent(inputUsername)
-                            .addComponent(inputPassword))))
+                            .addComponent(inputName, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(inputEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(inputUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(inputPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(errName)
                     .addComponent(errEmail)
                     .addComponent(errUsername)
-                    .addComponent(errPassword))
+                    .addComponent(errPass))
                 .addGap(103, 103, 103))
         );
         layout.setVerticalGroup(
@@ -148,7 +148,7 @@ public class RegisterFrame extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(inputPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblPassword)
-                    .addComponent(errPassword))
+                    .addComponent(errPass))
                 .addGap(52, 52, 52)
                 .addComponent(btnRegister)
                 .addContainerGap(50, Short.MAX_VALUE))
@@ -164,8 +164,9 @@ public class RegisterFrame extends javax.swing.JFrame {
     private void btnRegisterMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegisterMousePressed
         /*validate(); */
         valName();
+        valPass();
         
-        if(flagN == true){
+        if(flagN == true && flagP == true){
             new LoginFrame().setVisible(true);
             this.dispose();
         }
@@ -185,7 +186,7 @@ public class RegisterFrame extends javax.swing.JFrame {
         inputPassword.setText("");
     }//GEN-LAST:event_inputPasswordMousePressed
 
-        private void valName(){
+    private void valName(){
         String name = inputName.getText();
         String regex = "[a-zA-Z-]+"; //type check
         Pattern pat = Pattern.compile(regex);
@@ -209,6 +210,34 @@ public class RegisterFrame extends javax.swing.JFrame {
             flagN = true;
         }
     }   
+        
+    private void valPass(){
+        String pass = inputPassword.getText();
+        
+        if(pass.equals("") || pass.equals("[Enter Password]")){
+            inputPassword.setBackground(Color.RED);
+            errPass.setText("Input Required");
+            errPass.setVisible(true);
+            flagP = false;
+        }
+        else{
+            errPass.setVisible(false);
+            inputPassword.setBackground(Color.WHITE);
+            flagP = true;
+        }
+        if(pass.length() < 6){
+            inputPassword.setBackground(Color.RED);
+            errPass.setText("Must be at least 6 characters long");
+            errPass.setVisible(true);
+            flagP = false;
+        }
+        else{
+            errPass.setVisible(false);
+            inputPassword.setBackground(Color.WHITE);
+            flagP = true;
+        }
+    }
+            
     /**
      * @param args the command line arguments
      */
@@ -248,7 +277,7 @@ public class RegisterFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnRegister;
     private javax.swing.JLabel errEmail;
     private javax.swing.JLabel errName;
-    private javax.swing.JLabel errPassword;
+    private javax.swing.JLabel errPass;
     private javax.swing.JLabel errUsername;
     private javax.swing.JTextField inputEmail;
     private javax.swing.JTextField inputName;
