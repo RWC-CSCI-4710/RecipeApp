@@ -5,9 +5,9 @@ import java.util.ArrayList;
 /**
  * RecipeManager.java
  * 
+ * @author gbane_aboubakr
  * @author Gibbons_Jared
  * @author liberto_vincent
- * @author gbane_aboubakr
  */
 public class RecipeManager {
      /* Creation of Recipe Where the user inputs will be in the GUI class

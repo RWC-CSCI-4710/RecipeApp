@@ -1,14 +1,15 @@
 package rwc.csci4710.recipeapp;
 
-import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class DatabaseManager {
-    private PreparedStatement state;
+//    private PreparedStatement state;
     private Connection conn;
     private ResultSet rs;
     
@@ -23,25 +24,25 @@ public class DatabaseManager {
     }
     
     public void updateUsers (String a, String b, int num, String c)throws SQLException{
-        state = conn.prepareStatement("INSERT INTO tblUsers (Username, UserTeamName, LeagueCode, Password) VALUES ('"+ a +"', '"+ b +"', "+ num + ", '"+ c +"');");
-        state.executeUpdate();
+//        state = conn.prepareStatement("INSERT INTO tblUsers (Username, UserTeamName, LeagueCode, Password) VALUES ('"+ a +"', '"+ b +"', "+ num + ", '"+ c +"');");
+//        state.executeUpdate();
     }  
     
     public void updateLeague (String lg, int max)throws SQLException{
-        state = conn.prepareStatement("INSERT INTO tblLeague (LeagueName, Max) VALUES ('"+ lg +"', "+ max +" );");
-        state.executeUpdate();
+//        state = conn.prepareStatement("INSERT INTO tblLeague (LeagueName, Max) VALUES ('"+ lg +"', "+ max +" );");
+//        state.executeUpdate();
     } 
     
     public void updateTeam (int pID, String uID)throws SQLException{
         System.out.println(pID);
         System.out.println(uID);
-        state = conn.prepareStatement("INSERT INTO tblUserTeam (Username, PlayerID) VALUES ('"+ uID +"', "+ pID +");");
-        state.executeUpdate();
+//        state = conn.prepareStatement("INSERT INTO tblUserTeam (Username, PlayerID) VALUES ('"+ uID +"', "+ pID +");");
+//        state.executeUpdate();
     } 
     
     public ResultSet query(String query)throws SQLException{
-        state = conn.prepareStatement(query);
-        rs = state.executeQuery();
+//        state = conn.prepareStatement(query);
+//        rs = state.executeQuery();
         return rs;
     }
     
@@ -110,15 +111,15 @@ public class DatabaseManager {
         return temp;
     }
     
-    public void close(){
+    public void close() {
         try{
             try{
                 rs.close();
-                state.close();
+//                state.close();
                 conn.close();
             }
             catch(NullPointerException ex){
-                state.close();
+//                state.close();
                 conn.close();
             }
         }
