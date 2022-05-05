@@ -2,6 +2,7 @@ package rwc.csci4710.recipeapp;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -9,13 +10,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class DatabaseManager {
-//    private PreparedStatement state;
+    private PreparedStatement state;
     private Connection connection = null;
     private ResultSet rs = null;
     
     public void connectDatabase() throws SQLException{
-        String databaseURL = "";
-        
+        String databaseURL = "jdbc:ucanaccess://C://Users//chuck//Documents//RobertsWork//Junior//Spring//SWEng//RecipeApp//RecipeApp//RecipeAppDB.accdb/";
+        connection = DriverManager.getConnection(databaseURL);
         try {
             connection = DriverManager.getConnection(databaseURL);
             
@@ -26,10 +27,15 @@ public class DatabaseManager {
     }
     
     public ResultSet query(String query)throws SQLException{
-//        state = conn.prepareStatement(query);
-//        rs = state.executeQuery();
+        state = connection.prepareStatement(query);
+        rs = state.executeQuery();
         return rs;
     }
+    
+    public void updateUsers (String a, String b, int num, String c)throws SQLException{
+        state = connection.prepareStatement("SELECT Users.Username FROM Users;");
+        state.executeUpdate();
+    } 
     
     public boolean check(ResultSet inRs){
         boolean flag = false;

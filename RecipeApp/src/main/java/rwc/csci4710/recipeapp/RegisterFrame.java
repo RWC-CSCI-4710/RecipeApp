@@ -267,6 +267,7 @@ public class RegisterFrame extends javax.swing.JFrame {
     public void valUser(){
         String username = inputUsername.getText();
         
+        
         if(username.equals("") || username.equals("[Enter Username]")){
             inputUsername.setBackground(Color.RED);
             errUsername.setText("Input Required");
