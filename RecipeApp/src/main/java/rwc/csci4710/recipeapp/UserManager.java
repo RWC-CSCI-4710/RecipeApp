@@ -7,6 +7,12 @@ package rwc.csci4710.recipeapp;
  * @author Matt Wurl
  */
 public class UserManager {
+    
+    public static void createUser(String name, String email, String password) {
+        User newUser = new User(name, email, password);
+        System.out.println("New User: "+ newUser.toString());
+    }
+    
     public static void registerUser(User inUser) {
         System.out.println("New User: "+ inUser.toString());
     }

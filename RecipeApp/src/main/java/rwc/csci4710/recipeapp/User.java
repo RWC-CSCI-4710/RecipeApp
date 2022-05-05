@@ -12,11 +12,10 @@ public class User {
     private String password;
     private int id;
     
-    public User(String username, String email, String password, int id) {
+    public User(String username, String email, String password) {
         this.username = username;
         this.email = email;
         this.password = password;
-        this.id = id;
     }
 
     /* Accessors */
@@ -36,6 +35,7 @@ public class User {
     @Override
     public String toString() {
         return "Username: "+ username
-                + "\nEmail: "+ email;
+                + "\nEmail: "+ email
+                + "\nPassword: "+ password;
     }
 }
