@@ -13,8 +13,9 @@ import java.sql.SQLException;
 public class RecipeApp {
     public static void main(String[] args) throws IOException, SQLException {
         RegisterFrame registerFrame = new RegisterFrame();
-        
-        
         registerFrame.setVisible(true);
+        
+        DatabaseManager dbManager = new DatabaseManager();
+        dbManager.connectDatabase();
     }
 }
