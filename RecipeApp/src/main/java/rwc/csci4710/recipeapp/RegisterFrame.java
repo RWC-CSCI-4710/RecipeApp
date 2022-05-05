@@ -1,5 +1,9 @@
 package rwc.csci4710.recipeapp;
 
+import java.awt.Color;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  * RegisterFrame.java
  * 
@@ -9,9 +13,8 @@ package rwc.csci4710.recipeapp;
  */
 public class RegisterFrame extends javax.swing.JFrame {
 
-    /**
-     * Creates new form RegisterFrame
-     */
+    private boolean flagN = false;
+    
     public RegisterFrame() {
         initComponents();
     }
@@ -20,6 +23,7 @@ public class RegisterFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
         lblRegister = new javax.swing.JLabel();
         lblName = new javax.swing.JLabel();
         lblEmail = new javax.swing.JLabel();
@@ -30,6 +34,12 @@ public class RegisterFrame extends javax.swing.JFrame {
         inputUsername = new javax.swing.JTextField();
         inputPassword = new javax.swing.JTextField();
         btnRegister = new javax.swing.JButton();
+        errName = new javax.swing.JLabel();
+        errEmail = new javax.swing.JLabel();
+        errUsername = new javax.swing.JLabel();
+        errPassword = new javax.swing.JLabel();
+
+        jLabel1.setText("jLabel1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -74,6 +84,14 @@ public class RegisterFrame extends javax.swing.JFrame {
             }
         });
 
+        errName.setText("jLabel2");
+
+        errEmail.setText("jLabel2");
+
+        errUsername.setText("jLabel2");
+
+        errPassword.setText("jLabel2");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -98,7 +116,13 @@ public class RegisterFrame extends javax.swing.JFrame {
                             .addComponent(inputEmail)
                             .addComponent(inputUsername)
                             .addComponent(inputPassword))))
-                .addGap(159, 159, 159))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(errName)
+                    .addComponent(errEmail)
+                    .addComponent(errUsername)
+                    .addComponent(errPassword))
+                .addGap(103, 103, 103))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -108,19 +132,23 @@ public class RegisterFrame extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblName)
-                    .addComponent(inputName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(inputName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(errName))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblEmail)
-                    .addComponent(inputEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(inputEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(errEmail))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblUsername)
-                    .addComponent(inputUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(inputUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(errUsername))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(inputPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblPassword))
+                    .addComponent(lblPassword)
+                    .addComponent(errPassword))
                 .addGap(52, 52, 52)
                 .addComponent(btnRegister)
                 .addContainerGap(50, Short.MAX_VALUE))
@@ -135,8 +163,14 @@ public class RegisterFrame extends javax.swing.JFrame {
 
     private void btnRegisterMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegisterMousePressed
         /*validate(); */
-        new LoginFrame().setVisible(true);
-        this.dispose();
+        valName();
+        
+        if(flagN == true){
+            new LoginFrame().setVisible(true);
+            this.dispose();
+        }
+        
+        
     }//GEN-LAST:event_btnRegisterMousePressed
 
     private void inputEmailMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inputEmailMousePressed
@@ -151,6 +185,30 @@ public class RegisterFrame extends javax.swing.JFrame {
         inputPassword.setText("");
     }//GEN-LAST:event_inputPasswordMousePressed
 
+        private void valName(){
+        String name = inputName.getText();
+        String regex = "[a-zA-Z-]+"; //type check
+        Pattern pat = Pattern.compile(regex);
+        Matcher mat = pat.matcher(name);
+        
+        if(name.equals("") || name.equals("[Enter Name]")){
+            inputName.setBackground(Color.RED);
+            errName.setText("Input Required");
+            errName.setVisible(true);
+            flagN = false;
+        }
+        else if(!(mat.matches())){
+            inputName.setBackground(Color.RED);
+            errName.setText("Invalid input (Letters only)");
+            errName.setVisible(true);
+            flagN = false;
+        }
+        else{
+            errName.setVisible(false);
+            inputName.setBackground(Color.WHITE);
+            flagN = true;
+        }
+    }   
     /**
      * @param args the command line arguments
      */
@@ -188,10 +246,15 @@ public class RegisterFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegister;
+    private javax.swing.JLabel errEmail;
+    private javax.swing.JLabel errName;
+    private javax.swing.JLabel errPassword;
+    private javax.swing.JLabel errUsername;
     private javax.swing.JTextField inputEmail;
     private javax.swing.JTextField inputName;
     private javax.swing.JTextField inputPassword;
     private javax.swing.JTextField inputUsername;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblEmail;
     private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblPassword;
