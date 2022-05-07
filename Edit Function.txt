@@ -1,5 +1,0 @@
-- get file where recipe, username, or password was inputed as 
-- read lines 
-- if you choose to edit the recipe, username, or password choose yes or no
-- open file and edit it
-- close file and save it as new
