@@ -1,5 +1,10 @@
 package rwc.csci4710.recipeapp;
 
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  * LoginFrame.java
  * 
@@ -10,7 +15,9 @@ public class LoginFrame extends javax.swing.JFrame {
     /**
      * Creates new form LoginFrame
      */
-    public LoginFrame() {
+    User currentUser;
+        
+    public LoginFrame() throws FileNotFoundException {
         initComponents();
     }
 
@@ -29,6 +36,8 @@ public class LoginFrame extends javax.swing.JFrame {
         inputUsername = new javax.swing.JTextField();
         inputPassword = new javax.swing.JTextField();
         btnLogin = new javax.swing.JButton();
+        errUsername = new javax.swing.JLabel();
+        errPassword = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -54,6 +63,11 @@ public class LoginFrame extends javax.swing.JFrame {
                 inputPasswordMousePressed(evt);
             }
         });
+        inputPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inputPasswordActionPerformed(evt);
+            }
+        });
 
         btnLogin.setText("Login");
         btnLogin.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -61,6 +75,10 @@ public class LoginFrame extends javax.swing.JFrame {
                 btnLoginMousePressed(evt);
             }
         });
+
+        errUsername.setText("jLabel1");
+
+        errPassword.setText("jLabel1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -81,6 +99,10 @@ public class LoginFrame extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(inputUsername, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
                     .addComponent(inputPassword))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(errUsername)
+                    .addComponent(errPassword))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -91,11 +113,13 @@ public class LoginFrame extends javax.swing.JFrame {
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblUsername)
-                    .addComponent(inputUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(inputUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(errUsername))
                 .addGap(69, 69, 69)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblPassword)
                     .addComponent(inputPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblPassword))
+                    .addComponent(errPassword))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
                 .addComponent(btnLogin)
                 .addGap(55, 55, 55))
@@ -117,9 +141,49 @@ public class LoginFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_inputPasswordMousePressed
 
     private void btnLoginMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoginMousePressed
-        UserManager.loginUser(inputUsername.getText(), inputPassword.getText());
+        try {
+            if(!verify(inputUsername.getText(), inputPassword.getText())){
+                errUsername.setText("Login Information is incorrect");
+            }
+            else{
+                UserManager.loginUser(inputUsername.getText(), inputPassword.getText());
+                this.dispose();
+                new MainMenu().setVisible(true);
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(LoginFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+     
     }//GEN-LAST:event_btnLoginMousePressed
 
+    private void inputPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputPasswordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inputPasswordActionPerformed
+    
+    public boolean verify(String inUsername, String inPassword) throws FileNotFoundException{
+        
+        boolean flagName = false, flagPassword = false, flag = false;
+        
+        DatabaseManager dbManager = new DatabaseManager();
+        ArrayList<User> userList = dbManager.readUsers("Users.txt");
+        
+        for (User user1 : userList) {
+            if(user1.getUsername().equals(inUsername)){
+                flagName = true;
+            }
+            if(user1.getPassword().equals(inPassword)){
+                flagPassword = true;
+            }
+            if(flagName == true && flagPassword == true){
+                flag = true;
+                currentUser = user1;
+                break;
+            }
+        }
+        
+        return flag;
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -150,13 +214,19 @@ public class LoginFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new LoginFrame().setVisible(true);
+                try {
+                    new LoginFrame().setVisible(true);
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(LoginFrame.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogin;
+    private javax.swing.JLabel errPassword;
+    private javax.swing.JLabel errUsername;
     private javax.swing.JTextField inputPassword;
     private javax.swing.JTextField inputUsername;
     private javax.swing.JLabel lblHead;

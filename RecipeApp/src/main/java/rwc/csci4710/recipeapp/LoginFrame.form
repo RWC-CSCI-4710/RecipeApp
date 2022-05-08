@@ -42,6 +42,11 @@
                   <Component id="inputUsername" pref="175" max="32767" attributes="0"/>
                   <Component id="inputPassword" max="32767" attributes="0"/>
               </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="errUsername" min="-2" max="-2" attributes="0"/>
+                  <Component id="errPassword" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -55,11 +60,13 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblUsername" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="inputUsername" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="errUsername" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="inputPassword" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblPassword" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="inputPassword" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="errPassword" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="59" max="32767" attributes="0"/>
               <Component id="btnLogin" min="-2" max="-2" attributes="0"/>
@@ -93,6 +100,7 @@
     <Component class="javax.swing.JTextField" name="inputPassword">
       <Events>
         <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="inputPasswordMousePressed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="inputPasswordActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnLogin">
@@ -102,6 +110,16 @@
       <Events>
         <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnLoginMousePressed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="errUsername">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jLabel1"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="errPassword">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jLabel1"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

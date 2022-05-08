@@ -26,8 +26,8 @@ public class User {
     public String getEmail() {
         return email;
     }
-    public int getID() {
-        return id;
+    public String getPassword() {
+        return password;
     }
     
     /* Other */

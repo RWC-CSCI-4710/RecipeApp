@@ -1,5 +1,8 @@
 package rwc.csci4710.recipeapp;
 
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+
 /**
  * UserManager.java
  * 
@@ -13,8 +16,17 @@ public class UserManager {
         System.out.println("New User: "+ newUser.toString());
     }
     
-    public static void registerUser(User inUser) {
+    public static void registerUser(User inUser) throws FileNotFoundException {
         System.out.println("New User: "+ inUser.toString());
+        
+        DatabaseManager dbManager = new DatabaseManager();
+        ArrayList<User> userList = dbManager.readUsers("Users.txt");
+        
+        for (User user1 : userList) {
+            if(user1.getUsername().equals(inUser.getUsername())){
+                
+            }
+        }
     }
     
     public static void loginUser(String inUsername, String inPassword) {

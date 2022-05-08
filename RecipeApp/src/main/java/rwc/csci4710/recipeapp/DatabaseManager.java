@@ -20,11 +20,11 @@ public class DatabaseManager {
     private ResultSet rs = null;
     
     
-    public void readUsers(String inFileUsers) throws FileNotFoundException{
+    public ArrayList<User> readUsers(String inFileUsers) throws FileNotFoundException{
         File userFile = new File(inFileUsers);
         Scanner scUsers = new Scanner(userFile);
         String line, name, email, username, password;
-        List<User> manyUsers = new ArrayList<User>();
+        ArrayList<User> manyUsers = new ArrayList<User>();
         int count = 0;
                 
         while(scUsers.hasNextLine()){
@@ -50,6 +50,7 @@ public class DatabaseManager {
             System.out.println(manyUsers.get(i));
         }
         scUsers.close();
+        return manyUsers;
     }  
     
     public void readRecipes(String inFileRecipes) throws SQLException{

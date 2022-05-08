@@ -1,6 +1,8 @@
 package rwc.csci4710.recipeapp;
 
 import java.awt.Color;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -281,11 +283,7 @@ public class RegisterFrame extends javax.swing.JFrame {
         }
     }
     
-    public boolean verify(){
-        boolean flag = false;
-        
-        return flag;
-    }
+    
     
     /**
      * @param args the command line arguments
