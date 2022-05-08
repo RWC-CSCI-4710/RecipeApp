@@ -1,11 +1,16 @@
 package rwc.csci4710.recipeapp;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -14,12 +19,49 @@ public class DatabaseManager {
     private Connection connection = null;
     private ResultSet rs = null;
     
-    public void connectDatabase() throws SQLException{
-        String databaseURL = "jdbc:ucanaccess://C://Users//chuck//Documents//RobertsWork//Junior//Spring//SWEng//RecipeApp//RecipeApp//RecipeAppDB.accdb/";
-        connection = DriverManager.getConnection(databaseURL);
+    
+    public void readUsers(String inFileUsers) throws FileNotFoundException{
+        File userFile = new File(inFileUsers);
+        Scanner scUsers = new Scanner(userFile);
+        String line, name, email, username, password;
+        List<User> manyUsers = new ArrayList<User>();
+        int count = 0;
+                
+        while(scUsers.hasNextLine()){
+            line = scUsers.nextLine();
+            
+            if (line.isBlank()){
+                continue;
+            }
+            else{
+                
+                name = line;
+                email = scUsers.nextLine();
+                
+                username = scUsers.nextLine();
+                password = scUsers.nextLine();
+                
+                User temp = new User(username,email,password);
+                manyUsers.add(temp);
+                count++;
+            }
+        }
+        for (int i = 0; i < count; i++){
+            System.out.println(manyUsers.get(i));
+        }
+        scUsers.close();
+    }  
+    
+    public void readRecipes(String inFileRecipes) throws SQLException{
+        Scanner scRecipes = new Scanner(inFileRecipes);
+        
+        scRecipes.close();
+    }  
+    
+    /*public void connectDatabase() throws SQLException{
+        String databaseURL = "jdbc:ucanaccess://RecipeAppDB.accdb";
         try {
             connection = DriverManager.getConnection(databaseURL);
-            
             System.out.println("Connection success.");
         } catch (SQLException exception){
             System.out.println("Connection failed.");
@@ -82,5 +124,5 @@ public class DatabaseManager {
         catch(SQLException ex){
             Logger.getLogger(DatabaseManager.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
+    }*/
 }

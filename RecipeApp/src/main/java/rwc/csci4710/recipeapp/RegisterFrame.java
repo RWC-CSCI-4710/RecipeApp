@@ -162,7 +162,7 @@ public class RegisterFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_inputNameMousePressed
 
     private void btnRegisterMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegisterMousePressed
-        /*validate(); */
+        /*verify(); */
         valName();
         valPass();
         valEmail();
@@ -279,6 +279,12 @@ public class RegisterFrame extends javax.swing.JFrame {
             inputUsername.setBackground(Color.WHITE);
             flagU = true;
         }
+    }
+    
+    public boolean verify(){
+        boolean flag = false;
+        
+        return flag;
     }
     
     /**
