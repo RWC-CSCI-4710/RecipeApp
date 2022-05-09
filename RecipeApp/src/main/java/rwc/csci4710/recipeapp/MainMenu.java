@@ -8,11 +8,10 @@ package rwc.csci4710.recipeapp;
  * @author gibbons_jared
  */
 public class MainMenu extends javax.swing.JFrame {
-    private static User currentUser;
     /**
      * Creates new form MainMenu
      */
-    public MainMenu(User inCurrentUser) {
+    public MainMenu() {
         initComponents();
     }
 
@@ -157,7 +156,7 @@ public class MainMenu extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainMenu(currentUser).setVisible(true);
+                new MainMenu().setVisible(true);
             }
         });
     }

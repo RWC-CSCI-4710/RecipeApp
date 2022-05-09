@@ -18,7 +18,6 @@ import java.util.regex.Pattern;
 public class RegisterFrame extends javax.swing.JFrame {
 
     private boolean flagN, flagE, flagP, flagU = false;
-    
     public RegisterFrame() {
         initComponents();
     }
@@ -170,7 +169,11 @@ public class RegisterFrame extends javax.swing.JFrame {
         valName();
         valPass();
         valEmail();
-        valUser();
+        try {
+            valUser();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(RegisterFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         if(flagN == true && flagP == true && flagE == true && flagU ==true){
             try {
@@ -272,10 +275,12 @@ public class RegisterFrame extends javax.swing.JFrame {
         }
     }
     
-    public void valUser(){
+    public void valUser() throws FileNotFoundException{
         String username = inputUsername.getText();
         
-        
+        DatabaseManager dbManager = new DatabaseManager();
+        ArrayList<User> userList = dbManager.readUsers("Users.txt");
+    
         if(username.equals("") || username.equals("[Enter Username]")){
             inputUsername.setBackground(Color.RED);
             errUsername.setText("Input Required");
@@ -283,9 +288,20 @@ public class RegisterFrame extends javax.swing.JFrame {
             flagU = false;
         }
         else{
-            errUsername.setVisible(false);
-            inputUsername.setBackground(Color.WHITE);
-            flagU = true;
+            for (User user1 : userList) {
+                if(user1.getUsername().equals(inputUsername.getText())){
+                    inputUsername.setBackground(Color.RED);
+                    errUsername.setText("Username already taken!");
+                    errUsername.setVisible(true);
+                    flagU = false;
+                    break;
+                }
+                else{
+                    errUsername.setVisible(false);
+                    inputUsername.setBackground(Color.WHITE);
+                    flagU = true;
+                }
+            }
         }
     }
     

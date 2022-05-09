@@ -172,7 +172,7 @@ public class LoginFrame extends javax.swing.JFrame {
             else{
                 UserManager.loginUser(inputUsername.getText(), inputPassword.getText());
                 this.dispose();
-                new MainMenu(currentUser).setVisible(true);
+                new MainMenu().setVisible(true);
             }
         } catch (FileNotFoundException ex) {
             Logger.getLogger(LoginFrame.class.getName()).log(Level.SEVERE, null, ex);

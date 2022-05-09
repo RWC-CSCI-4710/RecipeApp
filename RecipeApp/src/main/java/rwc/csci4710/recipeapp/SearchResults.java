@@ -88,7 +88,7 @@ public class SearchResults extends javax.swing.JFrame {
 
     private void jButton1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MousePressed
         // TODO add your handling code here:
-        new MainMenu().setVisible(true);
+        //new MainMenu().setVisible(true);
         this.dispose();  
     }//GEN-LAST:event_jButton1MousePressed
 
