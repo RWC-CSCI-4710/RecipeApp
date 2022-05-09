@@ -109,19 +109,14 @@ public class SearchResults extends javax.swing.JFrame {
 
     private void SearchButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SearchButtonMousePressed
         // TODO add your handling code here:
-        ArrayList<String> recipes = new ArrayList<String>();
-        
-        recipes.add("chicken pasta"); 
-        recipes.add("pizza");
-        recipes.add("meatloaf"); 
         String userSearch = UserText.getText();
         //search 
-        for(int k=0; k<recipes.size(); k++)
+        for(int k=0; k<recipeList.size(); k++)
         {
             if(userSearch == recipeList.get(k).getName())
             {
                 System.out.println(recipeList.get(k));
-                ResultList.add(recipes.get(k));
+                ResultList.add(recipeList.get(k).getName());
             }
         }
     }//GEN-LAST:event_SearchButtonMousePressed
