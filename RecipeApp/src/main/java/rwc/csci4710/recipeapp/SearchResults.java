@@ -6,6 +6,8 @@
 
 package rwc.csci4710.recipeapp;
 
+import java.util.*;
+
 /**
  *
  * @author liberto_vincent
@@ -28,29 +30,31 @@ public class SearchResults extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList();
-        jButton1 = new javax.swing.JButton();
+        BackButton = new javax.swing.JButton();
+        ResultList = new java.awt.List();
+        SearchButton = new javax.swing.JButton();
+        UserText = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 12)); // NOI18N
-        jLabel1.setText("Search Results");
-
-        jList1.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 12)); // NOI18N
-        jList1.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane1.setViewportView(jList1);
-
-        jButton1.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 12)); // NOI18N
-        jButton1.setText("Back");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        BackButton.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 12)); // NOI18N
+        BackButton.setText("Back");
+        BackButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jButton1MousePressed(evt);
+                BackButtonMousePressed(evt);
+            }
+        });
+
+        SearchButton.setText("Search");
+        SearchButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                SearchButtonMousePressed(evt);
+            }
+        });
+
+        UserText.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UserTextActionPerformed(evt);
             }
         });
 
@@ -61,36 +65,61 @@ public class SearchResults extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(146, 146, 146)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(128, 128, 128)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jButton1)))
-                .addContainerGap(139, Short.MAX_VALUE))
+                        .addComponent(BackButton)
+                        .addGap(75, 75, 75)
+                        .addComponent(ResultList, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(104, 104, 104)
+                        .addComponent(SearchButton)
+                        .addGap(18, 18, 18)
+                        .addComponent(UserText, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(168, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(14, 14, 14)
-                .addComponent(jButton1)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addComponent(BackButton)
+                .addGap(17, 17, 17)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(SearchButton)
+                    .addComponent(UserText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
+                .addComponent(ResultList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(113, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MousePressed
+    private void BackButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BackButtonMousePressed
         // TODO add your handling code here:
-        //new MainMenu().setVisible(true);
+        ArrayList<String> recipes = new ArrayList<String>();
+        
+        recipes.add("chicken pasta");
+        recipes.add("pizza");
+        recipes.add("meatloaf");
+        String userSearch = UserText.getText();
+        //search 
+        for(int k=0; k<recipes.size(); k++)
+        {
+            if(userSearch == recipes.get(k))
+            {
+                System.out.println(recipes.get(k));
+                ResultList.add(recipes.get(k));
+            }
+        }
+        
+        
+        new MainMenu().setVisible(true);
         this.dispose();  
-    }//GEN-LAST:event_jButton1MousePressed
+    }//GEN-LAST:event_BackButtonMousePressed
+
+    private void UserTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UserTextActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_UserTextActionPerformed
 
     /**
      * @param args the command line arguments
@@ -128,9 +157,9 @@ public class SearchResults extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JList jList1;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton BackButton;
+    private java.awt.List ResultList;
+    private javax.swing.JButton SearchButton;
+    private javax.swing.JTextField UserText;
     // End of variables declaration//GEN-END:variables
 }
