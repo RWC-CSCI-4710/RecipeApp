@@ -17,7 +17,7 @@ import java.util.logging.Logger;
  */
 public class SearchResults extends javax.swing.JFrame {
     private static ArrayList<Recipe> recipeList;
-    /**
+    /** 
      * Creates new form SearchResults
      */
     public SearchResults(ArrayList<Recipe> inRecList) {
