@@ -15,8 +15,7 @@ import java.util.logging.Logger;
 
 public class RecipeApp {
     public static void main(String[] args) throws IOException, SQLException {
-       RegisterFrame registerFrame = new RegisterFrame();
-        registerFrame.setVisible(true);
+       new LoginFrame().setVisible(true);
         
     }
 }
