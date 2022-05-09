@@ -32,8 +32,8 @@ public class SearchResults extends javax.swing.JFrame {
 
         BackButton = new javax.swing.JButton();
         ResultList = new java.awt.List();
-        SearchButton = new javax.swing.JButton();
         UserText = new javax.swing.JTextField();
+        SearchButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -45,16 +45,16 @@ public class SearchResults extends javax.swing.JFrame {
             }
         });
 
+        UserText.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UserTextActionPerformed(evt);
+            }
+        });
+
         SearchButton.setText("Search");
         SearchButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 SearchButtonMousePressed(evt);
-            }
-        });
-
-        UserText.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                UserTextActionPerformed(evt);
             }
         });
 
@@ -70,11 +70,11 @@ public class SearchResults extends javax.swing.JFrame {
                         .addGap(75, 75, 75)
                         .addComponent(ResultList, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(104, 104, 104)
+                        .addGap(96, 96, 96)
                         .addComponent(SearchButton)
                         .addGap(18, 18, 18)
                         .addComponent(UserText, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(168, Short.MAX_VALUE))
+                .addContainerGap(176, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -83,8 +83,8 @@ public class SearchResults extends javax.swing.JFrame {
                 .addComponent(BackButton)
                 .addGap(17, 17, 17)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(SearchButton)
-                    .addComponent(UserText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(UserText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SearchButton))
                 .addGap(28, 28, 28)
                 .addComponent(ResultList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(113, Short.MAX_VALUE))
@@ -95,21 +95,6 @@ public class SearchResults extends javax.swing.JFrame {
 
     private void BackButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BackButtonMousePressed
         // TODO add your handling code here:
-        ArrayList<String> recipes = new ArrayList<String>();
-        
-        recipes.add("chicken pasta");
-        recipes.add("pizza");
-        recipes.add("meatloaf");
-        String userSearch = UserText.getText();
-        //search 
-        for(int k=0; k<recipes.size(); k++)
-        {
-            if(userSearch == recipes.get(k))
-            {
-                System.out.println(recipes.get(k));
-                ResultList.add(recipes.get(k));
-            }
-        }
         
         
         new MainMenu().setVisible(true);
@@ -120,6 +105,25 @@ public class SearchResults extends javax.swing.JFrame {
         // TODO add your handling code here:
         
     }//GEN-LAST:event_UserTextActionPerformed
+
+    private void SearchButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SearchButtonMousePressed
+        // TODO add your handling code here:
+        ArrayList<String> recipes = new ArrayList<String>();
+        
+        recipes.add("chicken pasta"); 
+        recipes.add("pizza");
+        recipes.add("meatloaf"); 
+        String userSearch = UserText.getText();
+        //search 
+        for(int k=0; k<recipes.size(); k++)
+        {
+            if(userSearch == recipes.get(k))
+            {
+                System.out.println(recipes.get(k));
+                ResultList.add(recipes.get(k));
+            }
+        }
+    }//GEN-LAST:event_SearchButtonMousePressed
 
     /**
      * @param args the command line arguments
