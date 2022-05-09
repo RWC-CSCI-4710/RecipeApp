@@ -1,21 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 
 package rwc.csci4710.recipeapp;
 
 /**
  *
  * @author liberto_vincent
+ * @author gibbons_jared
  */
 public class MainMenu extends javax.swing.JFrame {
-
+    private static User currentUser;
     /**
      * Creates new form MainMenu
      */
-    public MainMenu() {
+    public MainMenu(User inCurrentUser) {
         initComponents();
     }
 
@@ -160,7 +157,7 @@ public class MainMenu extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainMenu().setVisible(true);
+                new MainMenu(currentUser).setVisible(true);
             }
         });
     }
