@@ -9,6 +9,7 @@ import java.util.logging.Logger;
  * LoginFrame.java
  * 
  * @author Ortiz_Marcos
+ * @author Gibbons_Jared
  */
 public class LoginFrame extends javax.swing.JFrame {
 

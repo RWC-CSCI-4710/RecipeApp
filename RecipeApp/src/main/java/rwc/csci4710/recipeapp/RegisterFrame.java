@@ -3,6 +3,8 @@ package rwc.csci4710.recipeapp;
 import java.awt.Color;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -171,7 +173,11 @@ public class RegisterFrame extends javax.swing.JFrame {
         valUser();
         
         if(flagN == true && flagP == true && flagE == true && flagU ==true){
-            new LoginFrame().setVisible(true);
+            try {
+                new LoginFrame().setVisible(true);
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(RegisterFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
             this.dispose();
         }
         
