@@ -6,7 +6,10 @@
 
 package rwc.csci4710.recipeapp;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -98,8 +101,12 @@ public class RecipeList extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BackButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BackButtonMousePressed
-        // TODO add your handling code here:
-        new MainMenu().setVisible(true);
+        try {
+            // TODO add your handling code here:
+            new MainMenu().setVisible(true);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(RecipeList.class.getName()).log(Level.SEVERE, null, ex);
+        }
         this.dispose(); 
     }//GEN-LAST:event_BackButtonMousePressed
 

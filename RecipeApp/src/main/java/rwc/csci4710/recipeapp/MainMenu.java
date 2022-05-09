@@ -120,7 +120,7 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void jButton2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MousePressed
         // TODO add your handling code here:
-        new RecipeList().setVisible(true);
+        new RecipeList(listRecipes).setVisible(true);
         this.dispose(); 
     }//GEN-LAST:event_jButton2MousePressed
 

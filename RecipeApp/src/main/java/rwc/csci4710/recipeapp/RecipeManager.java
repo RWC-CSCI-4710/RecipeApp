@@ -1,7 +1,10 @@
 package rwc.csci4710.recipeapp;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * RecipeManager.java
@@ -23,8 +26,23 @@ public class RecipeManager {
         ArrayList<String> instructionList = new ArrayList<String>();
         
         Scanner scIng = new Scanner(ingredients);
-        while(scIng.hasNext()){
-            ingredientList.add
+        while(scIng.hasNextLine()){
+            ingredientList.add(scIng.nextLine());
+        }
+        scIng.close();
+        
+        Scanner scIns = new Scanner(instructions);
+        while(scIns.hasNextLine()){
+            instructionList.add(scIns.nextLine());
+        }
+        scIns.close();
+        
+        Recipe newRec = new Recipe(name, category, ingredientList, instructionList);
+        DatabaseManager db = new DatabaseManager();
+        try {
+            db.writeRecipes("Recipes.txt", newRec);
+        } catch (IOException ex) {
+            Logger.getLogger(RecipeManager.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
