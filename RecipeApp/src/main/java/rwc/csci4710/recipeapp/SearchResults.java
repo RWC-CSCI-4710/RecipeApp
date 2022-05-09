@@ -98,15 +98,8 @@ public class SearchResults extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BackButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BackButtonMousePressed
-        try {
-            // TODO add your handling code here:
-            
-            
-            new MainMenu().setVisible(true);
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(SearchResults.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        this.dispose();  
+        new MainMenu().setVisible(true);
+        this.dispose();   
     }//GEN-LAST:event_BackButtonMousePressed
 
     private void UserTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UserTextActionPerformed
@@ -125,9 +118,9 @@ public class SearchResults extends javax.swing.JFrame {
         //search 
         for(int k=0; k<recipes.size(); k++)
         {
-            if(userSearch == recipes.get(k))
+            if(userSearch == recipeList.get(k).getName())
             {
-                System.out.println(recipes.get(k));
+                System.out.println(recipeList.get(k));
                 ResultList.add(recipes.get(k));
             }
         }
