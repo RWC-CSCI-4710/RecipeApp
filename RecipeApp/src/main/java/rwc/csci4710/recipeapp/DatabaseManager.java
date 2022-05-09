@@ -53,12 +53,14 @@ public class DatabaseManager {
         File recipeFile = new File(inFileRecipes);
         Scanner scRecipes = new Scanner(recipeFile);
         String line, name, category, allIngredients, allInstructions;
-        ArrayList<String> ingredients = new ArrayList<String>();
-        ArrayList<String> instructions = new ArrayList<String>();
+        
         ArrayList<Recipe> manyRecipes = new ArrayList<Recipe>();
         int count = 0;
                 
         while(scRecipes.hasNextLine()){
+            ArrayList<String> ingredients = new ArrayList<String>();
+            ArrayList<String> instructions = new ArrayList<String>();
+            
             line = scRecipes.nextLine();
             if (line.isBlank()){
                 continue;
@@ -76,6 +78,12 @@ public class DatabaseManager {
                     ingredients.add(scIngredients.next());
                     numIng++;
                 }
+                System.out.println();
+                System.out.println();
+                System.out.println(ingredients);
+                System.out.println();
+                System.out.println();
+                
                 scIngredients.close();
                 
                 allInstructions = scRecipes.nextLine();
