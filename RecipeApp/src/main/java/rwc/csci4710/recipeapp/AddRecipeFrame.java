@@ -6,6 +6,9 @@
 
 package rwc.csci4710.recipeapp;
 
+import java.io.File;
+import java.io.IOException;
+
 /**
  *
  * @author liberto_vincent
@@ -176,13 +179,22 @@ public class AddRecipeFrame extends javax.swing.JFrame {
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
+        String category = jComboBox1.getActionCommand();
         
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jButton1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MousePressed
         // TODO add your handling code here:
+        File recipeFile = new File("Recipe.txt");
+        recipeFile
+        recipeFile.write(recipeName + "\n");
+        recipeFile.write(category + "\n");
+        recipeFile.write(ingredients + "\n");
+        recipeFile.write(instructions + "\n");
+        recipeFile.write("\n");
         new RecipeList().setVisible(true);
         this.dispose();  
+        
     }//GEN-LAST:event_jButton1MousePressed
 
     private void jButton2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MousePressed
@@ -206,6 +218,7 @@ public class AddRecipeFrame extends javax.swing.JFrame {
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
+       
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
