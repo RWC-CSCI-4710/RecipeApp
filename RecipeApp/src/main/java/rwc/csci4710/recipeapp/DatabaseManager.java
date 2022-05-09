@@ -16,10 +16,6 @@ import java.util.Scanner;
  */
 
 public class DatabaseManager {
-    private PreparedStatement state;
-    private Connection connection = null;
-    private ResultSet rs = null;
-    
     
     public ArrayList<User> readUsers(String inFileUsers) throws FileNotFoundException{
         File userFile = new File(inFileUsers);
@@ -80,6 +76,7 @@ public class DatabaseManager {
                     ingredients.add(scIngredients.next());
                     numIng++;
                 }
+                scIngredients.close();
                 
                 allInstructions = scRecipes.nextLine();
                 Scanner scInstructions = new Scanner(allInstructions).useDelimiter(",");
@@ -89,6 +86,7 @@ public class DatabaseManager {
                     instructions.add(scInstructions.next());
                     numIns++;
                 }
+                scInstructions.close();
                 
                 Recipe temp = new Recipe(name, category, ingredients, instructions);
                 manyRecipes.add(temp);

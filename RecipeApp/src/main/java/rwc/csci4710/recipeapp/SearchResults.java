@@ -138,7 +138,7 @@ public class SearchResults extends javax.swing.JFrame {
     }//GEN-LAST:event_BackButtonMousePressed
 
     private void SearchButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SearchButtonMousePressed
-        // TODO add your handling code here:
+        resultList.removeAll();
         String userSearch = UserText.getText().toUpperCase();
         //search 
         for(int k=0; k<recipeList.size(); k++)
@@ -164,9 +164,12 @@ public class SearchResults extends javax.swing.JFrame {
         
         DatabaseManager dbManager = new DatabaseManager();
         try {
-            ArrayList<Recipe> RecipeList = dbManager.readRecipes("Recipe.txt");
+            ArrayList<Recipe> RecipeList = dbManager.readRecipes("Recipes.txt");
+            
             
             for(Recipe recs:RecipeList){
+                System.out.println(recs.getName());
+                System.out.println(recs.getIngredients());
                 if(str.equals(recs.getName())){
                     txtRecipe.setText(recs.toString());
                     break;

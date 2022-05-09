@@ -35,16 +35,19 @@ public class RecipeList extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        lblRecipe = new javax.swing.JLabel();
         BackButton = new javax.swing.JButton();
-        RecipeListFull = new java.awt.List();
         ViewList = new javax.swing.JButton();
+        RecipeListFull = new java.awt.List();
+        jLabel2 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtRecipe = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setBackground(new java.awt.Color(255, 204, 204));
-        jLabel1.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 12)); // NOI18N
-        jLabel1.setText("Recipe List ");
+        lblRecipe.setBackground(new java.awt.Color(255, 204, 204));
+        lblRecipe.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 12)); // NOI18N
+        lblRecipe.setText("Recipe List ");
 
         BackButton.setBackground(new java.awt.Color(255, 204, 204));
         BackButton.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 12)); // NOI18N
@@ -63,38 +66,72 @@ public class RecipeList extends javax.swing.JFrame {
             }
         });
 
+        RecipeListFull.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RecipeListFullActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setBackground(new java.awt.Color(255, 204, 204));
+        jLabel2.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 12)); // NOI18N
+        jLabel2.setText("Recipe List ");
+
+        txtRecipe.setColumns(20);
+        txtRecipe.setRows(5);
+        jScrollPane1.setViewportView(txtRecipe);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 185, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblRecipe)
+                    .addComponent(ViewList))
+                .addGap(146, 146, 146))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(77, 77, 77)
-                        .addComponent(RecipeListFull, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(BackButton)
-                        .addGap(103, 103, 103)
-                        .addComponent(jLabel1)))
-                .addContainerGap(78, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(ViewList)
-                .addGap(146, 146, 146))
+                        .addComponent(BackButton))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(87, 87, 87)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(87, Short.MAX_VALUE)
+                    .addComponent(RecipeListFull, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(81, 81, 81)))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(191, Short.MAX_VALUE)
+                    .addComponent(jLabel2)
+                    .addGap(156, 156, 156)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BackButton)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(19, 19, 19)
+                .addComponent(BackButton)
+                .addGap(22, 22, 22)
                 .addComponent(ViewList)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 201, Short.MAX_VALUE)
+                .addComponent(lblRecipe, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(RecipeListFull, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(113, 113, 113))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(95, 95, 95)
+                    .addComponent(RecipeListFull, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(277, Short.MAX_VALUE)))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(16, 16, 16)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(486, Short.MAX_VALUE)))
         );
 
         pack();
@@ -117,6 +154,30 @@ public class RecipeList extends javax.swing.JFrame {
             RecipeListFull.add(recipeList.get(k).getName());
         }
     }//GEN-LAST:event_ViewListMousePressed
+
+    private void RecipeListFullActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RecipeListFullActionPerformed
+        String str = RecipeListFull.getSelectedItem().trim();
+        System.out.println(str);
+        lblRecipe.setVisible(true);
+        lblRecipe.setText(str);
+        
+        DatabaseManager dbManager = new DatabaseManager();
+        try {
+            ArrayList<Recipe> RecipeList = dbManager.readRecipes("Recipes.txt");
+            
+            for(Recipe recs:RecipeList){
+                System.out.println(str);
+                System.out.println(recs.getName());
+                if(str.equals(recs.getName())){
+                    txtRecipe.setText(recs.toString());
+                    break;
+                }
+            }
+            
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(SearchResults.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_RecipeListFullActionPerformed
 
     /**
      * @param args the command line arguments
@@ -157,6 +218,9 @@ public class RecipeList extends javax.swing.JFrame {
     private javax.swing.JButton BackButton;
     private java.awt.List RecipeListFull;
     private javax.swing.JButton ViewList;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblRecipe;
+    private javax.swing.JTextArea txtRecipe;
     // End of variables declaration//GEN-END:variables
 }
