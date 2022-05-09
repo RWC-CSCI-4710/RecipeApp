@@ -120,8 +120,17 @@ public class DatabaseManager {
         FileWriter fwR = new FileWriter(userFile, true);
         fwR.write("\n" + newRecipe.getName() + "\n");
         fwR.write(newRecipe.getCategory()+ "\n");
-        fwR.write(newRecipe.getIngredients()+ "\n");
-        fwR.write(newRecipe.getInstructions()+ "\n");
+        
+        for(String var:newRecipe.getIngredients()){
+            fwR.write(var +", ");
+        }
+        fwR.write("\n");
+        
+        for(String var:newRecipe.getInstructions()){
+            fwR.write(var +", ");
+        }
+        fwR.write("\n");
+        
         fwR.close();
         System.out.println("New Recipe Added To Database.");
     }

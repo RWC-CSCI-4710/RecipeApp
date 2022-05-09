@@ -162,15 +162,15 @@ public class AddRecipeFrame extends javax.swing.JFrame {
                                 .addComponent(AddInstructionBtn)))
                         .addGap(124, 124, 124))
                     .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel3)
-                                        .addGap(33, 33, 33)
+                                        .addGap(18, 18, 18)
                                         .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(43, 43, 43)
+                                        .addGap(58, 58, 58)
                                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(BackButton)
@@ -183,10 +183,6 @@ public class AddRecipeFrame extends javax.swing.JFrame {
                                     .addComponent(IngredientText)
                                     .addComponent(InstructionsText, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(171, 171, 171)
-                                .addComponent(SubmitRecipebtn))
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(RecipeNameText, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -198,6 +194,10 @@ public class AddRecipeFrame extends javax.swing.JFrame {
                     .addComponent(jLabel6)
                     .addComponent(InstructionList, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(50, 50, 50))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(180, 180, 180)
+                .addComponent(SubmitRecipebtn)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -223,7 +223,7 @@ public class AddRecipeFrame extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
-                            .addComponent(RecipeNameText, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(RecipeNameText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4)
                             .addComponent(IngredientText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -236,9 +236,9 @@ public class AddRecipeFrame extends javax.swing.JFrame {
                             .addComponent(InstructionsText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(AddInstructionBtn)
-                        .addGap(5, 5, 5)
+                        .addGap(61, 61, 61)
                         .addComponent(SubmitRecipebtn)
-                        .addGap(204, 204, 204))))
+                        .addGap(148, 148, 148))))
         );
 
         pack();
@@ -246,51 +246,64 @@ public class AddRecipeFrame extends javax.swing.JFrame {
 
     private void RecipeNameTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RecipeNameTextActionPerformed
         // TODO add your handling code here:
-        String recipeName = RecipeNameText.getText(); 
+        
     }//GEN-LAST:event_RecipeNameTextActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
-        String category = jComboBox1.getActionCommand();
+        category = jComboBox1.getActionCommand();
         
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void SubmitRecipebtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SubmitRecipebtnMousePressed
-        // TODO add your handling code here:
-        File recipeFile = new File("Recipe.txt");
+        recipeName = RecipeNameText.getText();
+        category = (String) jComboBox1.getSelectedItem();
+        
+        DatabaseManager db = new DatabaseManager();
+        Recipe newRec = new Recipe(recipeName, category, arrIngredients, arrInstructions);
+        
+        try {
+            db.writeRecipes("Recipes.txt", newRec);
+            new MainMenu().setVisible(true);
+        } catch (IOException ex) {
+            Logger.getLogger(AddRecipeFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
         this.dispose();  
         
     }//GEN-LAST:event_SubmitRecipebtnMousePressed
 
     private void BackButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BackButtonMousePressed
-        // TODO add your handling code here:
-        new MainMenu().setVisible(true); 
+        try {
+            // TODO add your handling code here:
+            new MainMenu().setVisible(true);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(AddRecipeFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
         this.dispose();
     }//GEN-LAST:event_BackButtonMousePressed
 
     private void IngredientTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IngredientTextActionPerformed
         // TODO add your handling code here:
-        String ingredients = IngredientText.getText(); 
+        ingredients = IngredientText.getText(); 
     }//GEN-LAST:event_IngredientTextActionPerformed
 
     private void InstructionsTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InstructionsTextActionPerformed
         // TODO add your handling code here:
-        String instructions = RecipeNameText.getText(); 
+        instructions = RecipeNameText.getText(); 
     }//GEN-LAST:event_InstructionsTextActionPerformed
 
     private void AddIngredientMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddIngredientMousePressed
         // TODO add your handling code here:
-        String ingredients = IngredientText.getText();
         IngredientsList.add(IngredientText.getText());
-        IngredientText.setText("(Enter an ingredient)");
         arrIngredients.add(IngredientText.getText());
+        IngredientText.setText("");  
     }//GEN-LAST:event_AddIngredientMousePressed
 
     private void AddInstructionBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddInstructionBtnMousePressed
         // TODO add your handling code here:
         InstructionList.add(InstructionsText.getText());
-        InstructionsText.setText("(Enter an instruction)");
         arrInstructions.add(InstructionsText.getText());
+        InstructionsText.setText("");
     }//GEN-LAST:event_AddInstructionBtnMousePressed
 
     /**

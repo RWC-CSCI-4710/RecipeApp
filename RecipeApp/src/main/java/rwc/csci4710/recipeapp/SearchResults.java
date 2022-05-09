@@ -23,7 +23,7 @@ public class SearchResults extends javax.swing.JFrame {
     public SearchResults(ArrayList<Recipe> inRecList) {
         initComponents();
         recipeList = inRecList;
-        System.out.println("hola");
+        lblRecipe.setVisible(false);
     }
 
     /**
@@ -36,9 +36,13 @@ public class SearchResults extends javax.swing.JFrame {
     private void initComponents() {
 
         BackButton = new javax.swing.JButton();
-        ResultList = new java.awt.List();
+        resultList = new java.awt.List();
         SearchButton = new javax.swing.JButton();
         UserText = new javax.swing.JTextField();
+        lblResults = new javax.swing.JLabel();
+        lblRecipe = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtRecipe = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,9 +54,9 @@ public class SearchResults extends javax.swing.JFrame {
             }
         });
 
-        ResultList.addActionListener(new java.awt.event.ActionListener() {
+        resultList.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ResultListActionPerformed(evt);
+                resultListActionPerformed(evt);
             }
         });
 
@@ -69,24 +73,37 @@ public class SearchResults extends javax.swing.JFrame {
             }
         });
 
+        lblResults.setText("Results:");
+
+        lblRecipe.setText("Recipe");
+
+        txtRecipe.setColumns(20);
+        txtRecipe.setRows(5);
+        jScrollPane1.setViewportView(txtRecipe);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(BackButton))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(104, 104, 104)
-                        .addComponent(SearchButton)
-                        .addGap(18, 18, 18)
-                        .addComponent(UserText))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addComponent(ResultList, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(69, Short.MAX_VALUE))
+                        .addGap(128, 128, 128)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblRecipe)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(resultList, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(66, 66, 66)
+                                    .addComponent(SearchButton)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(UserText, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jScrollPane1))
+                            .addComponent(lblResults))))
+                .addContainerGap(143, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -97,9 +114,15 @@ public class SearchResults extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(SearchButton)
                     .addComponent(UserText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
-                .addComponent(ResultList, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(lblResults)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(resultList, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(lblRecipe)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         pack();
@@ -123,7 +146,7 @@ public class SearchResults extends javax.swing.JFrame {
             if(recipeList.get(k).getName().toUpperCase().contains(userSearch))
             {
                 System.out.println(recipeList.get(k));
-                ResultList.add(recipeList.get(k).getName());
+                resultList.add(recipeList.get(k).getName());
             }
         }
     }//GEN-LAST:event_SearchButtonMousePressed
@@ -133,9 +156,27 @@ public class SearchResults extends javax.swing.JFrame {
 
     }//GEN-LAST:event_UserTextActionPerformed
 
-    private void ResultListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ResultListActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ResultListActionPerformed
+    private void resultListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resultListActionPerformed
+        String str = resultList.getSelectedItem().trim();
+        System.out.println(str);
+        lblRecipe.setVisible(true);
+        lblRecipe.setText(str);
+        
+        DatabaseManager dbManager = new DatabaseManager();
+        try {
+            ArrayList<Recipe> RecipeList = dbManager.readRecipes("Recipe.txt");
+            
+            for(Recipe recs:RecipeList){
+                if(str.equals(recs.getName())){
+                    txtRecipe.setText(recs.toString());
+                    break;
+                }
+            }
+            
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(SearchResults.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_resultListActionPerformed
 
     /**
      * @param args the command line arguments
@@ -174,8 +215,12 @@ public class SearchResults extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BackButton;
-    private java.awt.List ResultList;
     private javax.swing.JButton SearchButton;
     private javax.swing.JTextField UserText;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblRecipe;
+    private javax.swing.JLabel lblResults;
+    private java.awt.List resultList;
+    private javax.swing.JTextArea txtRecipe;
     // End of variables declaration//GEN-END:variables
 }
