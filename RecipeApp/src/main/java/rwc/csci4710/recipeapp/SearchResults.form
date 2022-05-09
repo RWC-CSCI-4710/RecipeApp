@@ -74,6 +74,9 @@
       </Events>
     </Component>
     <Component class="java.awt.List" name="ResultList">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ResultListActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="SearchButton">
       <Properties>

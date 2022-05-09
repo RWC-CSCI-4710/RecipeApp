@@ -50,6 +50,12 @@ public class SearchResults extends javax.swing.JFrame {
             }
         });
 
+        ResultList.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ResultListActionPerformed(evt);
+            }
+        });
+
         SearchButton.setText("Search");
         SearchButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -126,6 +132,10 @@ public class SearchResults extends javax.swing.JFrame {
         // TODO add your handling code here:
 
     }//GEN-LAST:event_UserTextActionPerformed
+
+    private void ResultListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ResultListActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ResultListActionPerformed
 
     /**
      * @param args the command line arguments

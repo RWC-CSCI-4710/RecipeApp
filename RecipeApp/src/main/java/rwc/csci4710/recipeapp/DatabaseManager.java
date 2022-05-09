@@ -5,16 +5,15 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
+/**
+ *
+ *@author gibbons_jared
+ */
 
 public class DatabaseManager {
     private PreparedStatement state;
@@ -107,90 +106,23 @@ public class DatabaseManager {
     public void writeUsers(String inFile, User newUser) throws IOException{
         
         File userFile = new File(inFile);
-        FileWriter fw = new FileWriter(userFile, true);
-        fw.write("\n" + newUser.getEmail() + "\n");
-        fw.write(newUser.getUsername()+ "\n");
-        fw.write(newUser.getPassword()+ "\n");
-        fw.close();
+        FileWriter fwU = new FileWriter(userFile, true);
+        fwU.write("\n" + newUser.getEmail() + "\n");
+        fwU.write(newUser.getUsername()+ "\n");
+        fwU.write(newUser.getPassword()+ "\n");
+        fwU.close();
         System.out.println("New User Added To Database.");
     }
     
-    public void writeRecipes(String inFile, User newRecipe) throws IOException{
+    public void writeRecipes(String inFile, Recipe newRecipe) throws IOException{
         
         File userFile = new File(inFile);
-        FileWriter fw = new FileWriter(userFile, true);
-        fw.write("\n" + newRecipe.getEmail() + "\n");
-        fw.write(newRecipe.getUsername()+ "\n");
-        fw.write(newRecipe.getPassword()+ "\n");
-        fw.close();
-        System.out.println("New User Added To Database.");
+        FileWriter fwR = new FileWriter(userFile, true);
+        fwR.write("\n" + newRecipe.getName() + "\n");
+        fwR.write(newRecipe.getCategory()+ "\n");
+        fwR.write(newRecipe.getIngredients()+ "\n");
+        fwR.write(newRecipe.getInstructions()+ "\n");
+        fwR.close();
+        System.out.println("New Recipe Added To Database.");
     }
-    
-    /*public void connectDatabase() throws SQLException{
-        String databaseURL = "jdbc:ucanaccess://RecipeAppDB.accdb";
-        try {
-            connection = DriverManager.getConnection(databaseURL);
-            System.out.println("Connection success.");
-        } catch (SQLException exception){
-            System.out.println("Connection failed.");
-        }
-    }
-    
-    public ResultSet query(String query)throws SQLException{
-        state = connection.prepareStatement(query);
-        rs = state.executeQuery();
-        return rs;
-    }
-    
-    public void updateUsers (String a, String b, int num, String c)throws SQLException{
-        state = connection.prepareStatement("SELECT Users.Username FROM Users;");
-        state.executeUpdate();
-    } 
-    
-    public boolean check(ResultSet inRs){
-        boolean flag = false;
-        int temp;
-        
-        try{
-            while (inRs.next()){
-                temp = inRs.getInt(1);
-                if(temp > 0){
-                    flag = true;
-                }
-            }
-        }catch(SQLException ex){
-            System.out.println("Failed to read RS");
-        }
-        return flag;
-    }
-    
-    public int getInt(ResultSet inRS) throws SQLException{
-        int num = -1;
-        
-        try{
-            while (inRS.next()){
-                num = inRS.getInt(1);
-            }
-        }catch(SQLException ex){
-            System.out.println("Failed to read RS");
-        }
-        return num;
-    }
-    
-    public void close() {
-        try{
-            try{
-                rs.close();
-//                state.close();
-                connection.close();
-            }
-            catch(NullPointerException ex){
-//                state.close();
-                connection.close();
-            }
-        }
-        catch(SQLException ex){
-            Logger.getLogger(DatabaseManager.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }*/
 }

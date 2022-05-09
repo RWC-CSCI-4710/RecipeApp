@@ -1,6 +1,7 @@
 package rwc.csci4710.recipeapp;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  * RecipeManager.java
@@ -16,15 +17,25 @@ public class RecipeManager {
     
     ArrayList<Recipe> newRecipe = new ArrayList<>();
     
-    public void addRecipe(User user, Recipe recipe) {
+    public void createRecipe(String name, String category, String ingredients, String instructions) {
+        
+        ArrayList<String> ingredientList = new ArrayList<String>();
+        ArrayList<String> instructionList = new ArrayList<String>();
+        
+        Scanner scIng = new Scanner(ingredients);
+        while(scIng.hasNext()){
+            ingredientList.add
+        }
+    }
+    
+    public void addRecipe(Recipe recipe) {
         
         newRecipe.add(recipe);
         Recipe temp = newRecipe.get(0);
-    
     }
     
 
-    public void removeRecipe(User user, Recipe recipe) {
+    public void removeRecipe(Recipe recipe) {
         // Remove recipe from database...
         newRecipe.remove(recipe);
         
