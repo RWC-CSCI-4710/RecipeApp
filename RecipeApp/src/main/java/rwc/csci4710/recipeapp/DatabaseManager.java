@@ -58,7 +58,8 @@ public class DatabaseManager {
         File recipeFile = new File(inFileRecipes);
         Scanner scRecipes = new Scanner(recipeFile);
         String line, name, category, allIngredients, allInstructions;
-        ArrayList<String> ingredients = null, instructions = null;
+        ArrayList<String> ingredients = new ArrayList<String>();
+        ArrayList<String> instructions = new ArrayList<String>();
         ArrayList<Recipe> manyRecipes = new ArrayList<Recipe>();
         int count = 0;
                 

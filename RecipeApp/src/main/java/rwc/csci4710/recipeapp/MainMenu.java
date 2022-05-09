@@ -2,6 +2,11 @@
 
 package rwc.csci4710.recipeapp;
 
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author liberto_vincent
@@ -11,8 +16,10 @@ public class MainMenu extends javax.swing.JFrame {
     /**
      * Creates new form MainMenu
      */
-    public MainMenu() {
+    public MainMenu() throws FileNotFoundException {
         initComponents();
+        DatabaseManager db = new DatabaseManager();
+        ArrayList<Recipe> listRecipes = db.readRecipes("Recipes.txt");
     }
 
     /**
@@ -156,7 +163,11 @@ public class MainMenu extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainMenu().setVisible(true);
+                try {
+                    new MainMenu().setVisible(true);
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }

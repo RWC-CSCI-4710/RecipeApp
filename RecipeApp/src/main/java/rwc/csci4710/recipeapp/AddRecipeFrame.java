@@ -185,7 +185,7 @@ public class AddRecipeFrame extends javax.swing.JFrame {
 
     private void jButton1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MousePressed
         // TODO add your handling code here:
-        File recipeFile = new File("Recipe.txt");
+        /*File recipeFile = new File("Recipe.txt");
         recipeFile
         recipeFile.write(recipeName + "\n");
         recipeFile.write(category + "\n");
@@ -193,7 +193,7 @@ public class AddRecipeFrame extends javax.swing.JFrame {
         recipeFile.write(instructions + "\n");
         recipeFile.write("\n");
         new RecipeList().setVisible(true);
-        this.dispose();  
+        this.dispose();  */
         
     }//GEN-LAST:event_jButton1MousePressed
 
