@@ -1,5 +1,6 @@
 package rwc.csci4710.recipeapp;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
@@ -11,10 +12,10 @@ import java.util.Arrays;
 public class Recipe {    
     private String name;
     private String category;
-    private String[] ingredients;
-    private String[] instructions;
+    private ArrayList<String> ingredients = new ArrayList<String>();
+    private ArrayList<String> instructions = new ArrayList<String>();
     
-    public Recipe(String name, String category, String[] ingredients, String[] instructions) {
+    public Recipe(String name, String category, ArrayList<String> ingredients, ArrayList<String> instructions) {
         this.name = name;
         this.category = category;
         this.ingredients = ingredients;
@@ -31,11 +32,11 @@ public class Recipe {
         return category;
     }
 
-    public String[] getIngredients() {
+    public ArrayList<String> getIngredients() {
         return ingredients;
     }
     
-    public String[] getInstructions() {
+    public ArrayList<String> getInstructions() {
         return instructions;
     }
     
@@ -49,11 +50,11 @@ public class Recipe {
         category = newCategory;
     }
     
-    public void setIngredients(String[] newIngredients) {
+    public void setIngredients(ArrayList<String> newIngredients) {
         ingredients = newIngredients;
     }
     
-    public void setInstructions(String[] newInstructions) {
+    public void setInstructions(ArrayList<String> newInstructions) {
         instructions = newInstructions;
     }
         
@@ -63,7 +64,7 @@ public class Recipe {
     public String toString() {
         return "Name: "+ name
                 + "\nCategory: " + category
-                + "\nIngredients: " + Arrays.toString(ingredients)
-                + "\nInstructions" + Arrays.toString(instructions);
+                + "\nIngredients: " + ingredients
+                + "\nInstructions" + instructions;
     }
 }

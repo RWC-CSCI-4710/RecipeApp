@@ -65,7 +65,6 @@ public class DatabaseManager {
                 
         while(scRecipes.hasNextLine()){
             line = scRecipes.nextLine();
-            System.out.println(line);
             if (line.isBlank()){
                 continue;
             }
@@ -84,25 +83,15 @@ public class DatabaseManager {
                 }
                 
                 allInstructions = scRecipes.nextLine();
-                Scanner scInstructions = new Scanner(allIngredients).useDelimiter(",");
+                Scanner scInstructions = new Scanner(allInstructions).useDelimiter(",");
                 int numIns = 0;
                 
                 while(scInstructions.hasNext()){
-                    ingredients.add(scIngredients.next());
-                    numIng++;
+                    instructions.add(scInstructions.next());
+                    numIns++;
                 }
                 
-                String [] ingr = null;
-                for(int i = 0; i < ingredients.size(); i++){
-                    ingr[i] = ingredients.get(i);
-                }
-                
-                String [] inst = null;
-                for(int i = 0; i < ingredients.size(); i++){
-                    inst[i] = ingredients.get(i);
-                }
-                
-                Recipe temp = new Recipe(name, category, ingr, inst);
+                Recipe temp = new Recipe(name, category, ingredients, instructions);
                 manyRecipes.add(temp);
                 count++;
             }

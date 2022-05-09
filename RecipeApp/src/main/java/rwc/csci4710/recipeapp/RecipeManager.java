@@ -40,10 +40,10 @@ public class RecipeManager {
         String cat = changedRecipe.getCategory();
         oldRecipe.setCategory(cat);
         
-        String[] ingredients = changedRecipe.getIngredients();
+        ArrayList<String> ingredients = changedRecipe.getIngredients();
         oldRecipe.setIngredients(ingredients);
          
-        String[] instructions = changedRecipe.getInstructions();
+        ArrayList<String> instructions = changedRecipe.getInstructions();
         oldRecipe.setInstructions(instructions);
     }
 }

@@ -13,13 +13,14 @@ import java.util.logging.Logger;
  * @author gibbons_jared
  */
 public class MainMenu extends javax.swing.JFrame {
+    private static ArrayList<Recipe> listRecipes;
     /**
      * Creates new form MainMenu
      */
     public MainMenu() throws FileNotFoundException {
         initComponents();
         DatabaseManager db = new DatabaseManager();
-        ArrayList<Recipe> listRecipes = db.readRecipes("Recipes.txt");
+        listRecipes = db.readRecipes("Recipes.txt");
     }
 
     /**
@@ -129,7 +130,7 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void jButton3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MousePressed
         // TODO add your handling code here:
-        new SearchResults().setVisible(true);
+        new SearchResults(listRecipes).setVisible(true);
         this.dispose();  
     }//GEN-LAST:event_jButton3MousePressed
 
