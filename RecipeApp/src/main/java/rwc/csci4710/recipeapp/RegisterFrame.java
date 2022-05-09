@@ -1,7 +1,9 @@
 package rwc.csci4710.recipeapp;
 
 import java.awt.Color;
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -18,6 +20,7 @@ import java.util.regex.Pattern;
 public class RegisterFrame extends javax.swing.JFrame {
 
     private boolean flagN, flagE, flagP, flagU = false;
+     
     public RegisterFrame() {
         initComponents();
     }
@@ -177,10 +180,16 @@ public class RegisterFrame extends javax.swing.JFrame {
         
         if(flagN == true && flagP == true && flagE == true && flagU ==true){
             try {
+                User newUser = new User(inputUsername.getText(), inputEmail.getText(), inputPassword.getText());
+                DatabaseManager dbManager = new DatabaseManager();
+                dbManager.writeUsers("Users.txt", newUser);
                 new LoginFrame().setVisible(true);
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(RegisterFrame.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(RegisterFrame.class.getName()).log(Level.SEVERE, null, ex);
             }
+            
             this.dispose();
         }
         
@@ -277,9 +286,9 @@ public class RegisterFrame extends javax.swing.JFrame {
     
     public void valUser() throws FileNotFoundException{
         String username = inputUsername.getText();
-        
         DatabaseManager dbManager = new DatabaseManager();
         ArrayList<User> userList = dbManager.readUsers("Users.txt");
+        
     
         if(username.equals("") || username.equals("[Enter Username]")){
             inputUsername.setBackground(Color.RED);

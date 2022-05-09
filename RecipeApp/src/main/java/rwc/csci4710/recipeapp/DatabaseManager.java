@@ -2,6 +2,8 @@ package rwc.csci4710.recipeapp;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -29,15 +31,13 @@ public class DatabaseManager {
                 
         while(scUsers.hasNextLine()){
             line = scUsers.nextLine();
-            
+            System.out.println(line);
             if (line.isBlank()){
                 continue;
             }
             else{
                 
-                name = line;
-                email = scUsers.nextLine();
-                
+                email = line;
                 username = scUsers.nextLine();
                 password = scUsers.nextLine();
                 
@@ -57,7 +57,18 @@ public class DatabaseManager {
         Scanner scRecipes = new Scanner(inFileRecipes);
         
         scRecipes.close();
-    }  
+    }
+    
+    public void writeUsers(String inFile, User newUser) throws IOException{
+        
+        File userFile = new File(inFile);
+        FileWriter fw = new FileWriter(userFile, true);
+        fw.write("\n" + newUser.getEmail() + "\n");
+        fw.write(newUser.getUsername()+ "\n");
+        fw.write(newUser.getPassword()+ "\n");
+        fw.close();
+        System.out.println("New User Added To Database.");
+    }
     
     /*public void connectDatabase() throws SQLException{
         String databaseURL = "jdbc:ucanaccess://RecipeAppDB.accdb";
