@@ -10,11 +10,11 @@ import java.util.Arrays;
  */
 public class Recipe {    
     private String name;
-    private Category category;
-    private Ingredient[] ingredients;
+    private String category;
+    private String[] ingredients;
     private String[] instructions;
     
-    public Recipe(String name, Category category, Ingredient[] ingredients, String[] instructions) {
+    public Recipe(String name, String category, String[] ingredients, String[] instructions) {
         this.name = name;
         this.category = category;
         this.ingredients = ingredients;
@@ -27,11 +27,11 @@ public class Recipe {
         return name;
     }
     
-    public Category getCategory() {
+    public String getCategory() {
         return category;
     }
 
-    public Ingredient[] getIngredients() {
+    public String[] getIngredients() {
         return ingredients;
     }
     
@@ -45,11 +45,11 @@ public class Recipe {
         name = newName;
     }
     
-    public void setCategory(Category newCategory) {
+    public void setCategory(String newCategory) {
         category = newCategory;
     }
     
-    public void setIngredients(Ingredient[] newIngredients) {
+    public void setIngredients(String[] newIngredients) {
         ingredients = newIngredients;
     }
     

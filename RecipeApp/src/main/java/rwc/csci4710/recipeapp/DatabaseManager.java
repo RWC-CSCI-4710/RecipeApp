@@ -53,10 +53,66 @@ public class DatabaseManager {
         return manyUsers;
     }  
     
-    public void readRecipes(String inFileRecipes) throws SQLException{
-        Scanner scRecipes = new Scanner(inFileRecipes);
+    public ArrayList<Recipe> readRecipes(String inFileRecipes)throws FileNotFoundException{
+        
+        File recipeFile = new File(inFileRecipes);
+        Scanner scRecipes = new Scanner(recipeFile);
+        String line, name, category, allIngredients, allInstructions;
+        ArrayList<String> ingredients = null, instructions = null;
+        ArrayList<Recipe> manyRecipes = new ArrayList<Recipe>();
+        int count = 0;
+                
+        while(scRecipes.hasNextLine()){
+            line = scRecipes.nextLine();
+            System.out.println(line);
+            if (line.isBlank()){
+                continue;
+            }
+            else{
+                
+                name = line;
+                category = scRecipes.nextLine();
+                
+                allIngredients = scRecipes.nextLine();
+                Scanner scIngredients = new Scanner(allIngredients).useDelimiter(",");
+                int numIng = 0;
+                
+                while(scIngredients.hasNext()){
+                    ingredients.add(scIngredients.next());
+                    numIng++;
+                }
+                
+                allInstructions = scRecipes.nextLine();
+                Scanner scInstructions = new Scanner(allIngredients).useDelimiter(",");
+                int numIns = 0;
+                
+                while(scInstructions.hasNext()){
+                    ingredients.add(scIngredients.next());
+                    numIng++;
+                }
+                
+                String [] ingr = null;
+                for(int i = 0; i < ingredients.size(); i++){
+                    ingr[i] = ingredients.get(i);
+                }
+                
+                String [] inst = null;
+                for(int i = 0; i < ingredients.size(); i++){
+                    inst[i] = ingredients.get(i);
+                }
+                
+                Recipe temp = new Recipe(name, category, ingr, inst);
+                manyRecipes.add(temp);
+                count++;
+            }
+        }
+        for (int i = 0; i < count; i++){
+            System.out.println(manyRecipes.get(i));
+        }
+        scUsers.close();
         
         scRecipes.close();
+        return manyRecipes;
     }
     
     public void writeUsers(String inFile, User newUser) throws IOException{
@@ -66,6 +122,17 @@ public class DatabaseManager {
         fw.write("\n" + newUser.getEmail() + "\n");
         fw.write(newUser.getUsername()+ "\n");
         fw.write(newUser.getPassword()+ "\n");
+        fw.close();
+        System.out.println("New User Added To Database.");
+    }
+    
+    public void writeRecipes(String inFile, User newRecipe) throws IOException{
+        
+        File userFile = new File(inFile);
+        FileWriter fw = new FileWriter(userFile, true);
+        fw.write("\n" + newRecipe.getEmail() + "\n");
+        fw.write(newRecipe.getUsername()+ "\n");
+        fw.write(newRecipe.getPassword()+ "\n");
         fw.close();
         System.out.println("New User Added To Database.");
     }
