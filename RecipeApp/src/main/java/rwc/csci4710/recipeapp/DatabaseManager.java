@@ -109,7 +109,6 @@ public class DatabaseManager {
         for (int i = 0; i < count; i++){
             System.out.println(manyRecipes.get(i));
         }
-        scUsers.close();
         
         scRecipes.close();
         return manyRecipes;
