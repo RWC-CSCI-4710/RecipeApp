@@ -23,6 +23,8 @@ public class RegisterFrame extends javax.swing.JFrame {
      
     public RegisterFrame() {
         initComponents();
+        errName.setVisible(false);
+        errName.setVisible(false);
     }
 
     

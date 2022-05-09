@@ -23,6 +23,7 @@ public class SearchResults extends javax.swing.JFrame {
     public SearchResults(ArrayList<Recipe> inRecList) {
         initComponents();
         recipeList = inRecList;
+        System.out.println("hola");
     }
 
     /**
@@ -36,8 +37,8 @@ public class SearchResults extends javax.swing.JFrame {
 
         BackButton = new javax.swing.JButton();
         ResultList = new java.awt.List();
-        UserText = new javax.swing.JTextField();
         SearchButton = new javax.swing.JButton();
+        UserText = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -49,16 +50,16 @@ public class SearchResults extends javax.swing.JFrame {
             }
         });
 
-        UserText.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                UserTextActionPerformed(evt);
-            }
-        });
-
         SearchButton.setText("Search");
         SearchButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 SearchButtonMousePressed(evt);
+            }
+        });
+
+        UserText.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UserTextActionPerformed(evt);
             }
         });
 
@@ -67,18 +68,19 @@ public class SearchResults extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(BackButton)
-                        .addGap(75, 75, 75)
-                        .addComponent(ResultList, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(BackButton))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(96, 96, 96)
+                        .addGap(104, 104, 104)
                         .addComponent(SearchButton)
                         .addGap(18, 18, 18)
-                        .addComponent(UserText, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(176, Short.MAX_VALUE))
+                        .addComponent(UserText))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addComponent(ResultList, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(69, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -87,39 +89,43 @@ public class SearchResults extends javax.swing.JFrame {
                 .addComponent(BackButton)
                 .addGap(17, 17, 17)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(UserText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(SearchButton))
+                    .addComponent(SearchButton)
+                    .addComponent(UserText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
-                .addComponent(ResultList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(113, Short.MAX_VALUE))
+                .addComponent(ResultList, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void BackButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BackButtonMousePressed
-        new MainMenu().setVisible(true);
+        try {
+            new MainMenu().setVisible(true);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(SearchResults.class.getName()).log(Level.SEVERE, null, ex);
+        }
         this.dispose();   
     }//GEN-LAST:event_BackButtonMousePressed
 
-    private void UserTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UserTextActionPerformed
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_UserTextActionPerformed
-
     private void SearchButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SearchButtonMousePressed
         // TODO add your handling code here:
-        String userSearch = UserText.getText();
+        String userSearch = UserText.getText().toUpperCase();
         //search 
         for(int k=0; k<recipeList.size(); k++)
         {
-            if(userSearch == recipeList.get(k).getName())
+            if(recipeList.get(k).getName().toUpperCase().contains(userSearch))
             {
                 System.out.println(recipeList.get(k));
                 ResultList.add(recipeList.get(k).getName());
             }
         }
     }//GEN-LAST:event_SearchButtonMousePressed
+
+    private void UserTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UserTextActionPerformed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_UserTextActionPerformed
 
     /**
      * @param args the command line arguments
