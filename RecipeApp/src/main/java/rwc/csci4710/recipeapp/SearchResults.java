@@ -43,6 +43,7 @@ public class SearchResults extends javax.swing.JFrame {
         lblRecipe = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtRecipe = new javax.swing.JTextArea();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -81,6 +82,10 @@ public class SearchResults extends javax.swing.JFrame {
         txtRecipe.setRows(5);
         jScrollPane1.setViewportView(txtRecipe);
 
+        jLabel1.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 104, 104));
+        jLabel1.setText("Search");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -89,7 +94,9 @@ public class SearchResults extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(BackButton))
+                        .addComponent(BackButton)
+                        .addGap(290, 290, 290)
+                        .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(128, 128, 128)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -100,17 +107,22 @@ public class SearchResults extends javax.swing.JFrame {
                                     .addGap(66, 66, 66)
                                     .addComponent(SearchButton)
                                     .addGap(18, 18, 18)
-                                    .addComponent(UserText, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jScrollPane1))
-                            .addComponent(lblResults))))
-                .addContainerGap(143, Short.MAX_VALUE))
+                                    .addComponent(UserText, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(lblResults)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 607, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(73, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(BackButton)
-                .addGap(17, 17, 17)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(BackButton))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1)))
+                .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(SearchButton)
                     .addComponent(UserText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -118,15 +130,43 @@ public class SearchResults extends javax.swing.JFrame {
                 .addComponent(lblResults)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(resultList, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblRecipe)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void UserTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UserTextActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_UserTextActionPerformed
+
+    private void resultListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resultListActionPerformed
+        String str = resultList.getSelectedItem().trim();
+        System.out.println(str);
+        lblRecipe.setVisible(true);
+        lblRecipe.setText(str);
+
+        DatabaseManager dbManager = new DatabaseManager();
+        try {
+            ArrayList<Recipe> RecipeList = dbManager.readRecipes("Recipes.txt");
+
+            for(Recipe recs:RecipeList){
+                System.out.println(recs.getName());
+                System.out.println(recs.getIngredients());
+                if(str.equals(recs.getName())){
+                    txtRecipe.setText(recs.toString());
+                    break;
+                }
+            }
+
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(SearchResults.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_resultListActionPerformed
 
     private void BackButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BackButtonMousePressed
         try {
@@ -134,13 +174,13 @@ public class SearchResults extends javax.swing.JFrame {
         } catch (FileNotFoundException ex) {
             Logger.getLogger(SearchResults.class.getName()).log(Level.SEVERE, null, ex);
         }
-        this.dispose();   
+        this.dispose();
     }//GEN-LAST:event_BackButtonMousePressed
 
     private void SearchButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SearchButtonMousePressed
         resultList.removeAll();
         String userSearch = UserText.getText().toUpperCase();
-        //search 
+        //search
         for(int k=0; k<recipeList.size(); k++)
         {
             if(recipeList.get(k).getName().toUpperCase().contains(userSearch))
@@ -150,36 +190,6 @@ public class SearchResults extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_SearchButtonMousePressed
-
-    private void UserTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UserTextActionPerformed
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_UserTextActionPerformed
-
-    private void resultListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resultListActionPerformed
-        String str = resultList.getSelectedItem().trim();
-        System.out.println(str);
-        lblRecipe.setVisible(true);
-        lblRecipe.setText(str);
-        
-        DatabaseManager dbManager = new DatabaseManager();
-        try {
-            ArrayList<Recipe> RecipeList = dbManager.readRecipes("Recipes.txt");
-            
-            
-            for(Recipe recs:RecipeList){
-                System.out.println(recs.getName());
-                System.out.println(recs.getIngredients());
-                if(str.equals(recs.getName())){
-                    txtRecipe.setText(recs.toString());
-                    break;
-                }
-            }
-            
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(SearchResults.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_resultListActionPerformed
 
     /**
      * @param args the command line arguments
@@ -220,6 +230,7 @@ public class SearchResults extends javax.swing.JFrame {
     private javax.swing.JButton BackButton;
     private javax.swing.JButton SearchButton;
     private javax.swing.JTextField UserText;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblRecipe;
     private javax.swing.JLabel lblResults;
