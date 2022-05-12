@@ -22,8 +22,8 @@ public class RecipeManager {
     
     public void createRecipe(String name, String category, String ingredients, String instructions) {
         
-        ArrayList<String> ingredientList = new ArrayList<String>();
-        ArrayList<String> instructionList = new ArrayList<String>();
+        ArrayList<String> ingredientList = new ArrayList<>();
+        ArrayList<String> instructionList = new ArrayList<>();
         
         Scanner scIng = new Scanner(ingredients);
         while(scIng.hasNextLine()){

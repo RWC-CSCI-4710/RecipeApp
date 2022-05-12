@@ -11,27 +11,25 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- *
- *@author gibbons_jared
+ * DatabaseManager.java
+ * 
+ * @author gibbons_jared
+ * @author Matt Wurl
  */
 
 public class DatabaseManager {
-    
     public ArrayList<User> readUsers(String inFileUsers) throws FileNotFoundException{
         File userFile = new File(inFileUsers);
         Scanner scUsers = new Scanner(userFile);
-        String line, name, email, username, password;
+        String line, email, username, password;
         ArrayList<User> manyUsers = new ArrayList<User>();
         int count = 0;
                 
-        while(scUsers.hasNextLine()){
+        while(scUsers.hasNextLine()) {
             line = scUsers.nextLine();
             System.out.println(line);
-            if (line.isBlank()){
-                continue;
-            }
-            else{
-                
+
+            if (!line.isBlank()) {
                 email = line;
                 username = scUsers.nextLine();
                 password = scUsers.nextLine();
@@ -41,32 +39,31 @@ public class DatabaseManager {
                 count++;
             }
         }
-        for (int i = 0; i < count; i++){
-            System.out.println(manyUsers.get(i));
+        
+        for (User user : manyUsers) {
+            System.out.println(user);
         }
+        
         scUsers.close();
+        
         return manyUsers;
     }  
     
-    public ArrayList<Recipe> readRecipes(String inFileRecipes)throws FileNotFoundException{
-        
+    public ArrayList<Recipe> readRecipes(String inFileRecipes) throws FileNotFoundException {
         File recipeFile = new File(inFileRecipes);
         Scanner scRecipes = new Scanner(recipeFile);
         String line, name, category, allIngredients, allInstructions;
         
-        ArrayList<Recipe> manyRecipes = new ArrayList<Recipe>();
+        ArrayList<Recipe> manyRecipes = new ArrayList<>();
         int count = 0;
                 
-        while(scRecipes.hasNextLine()){
-            ArrayList<String> ingredients = new ArrayList<String>();
-            ArrayList<String> instructions = new ArrayList<String>();
+        while(scRecipes.hasNextLine()) {
+            ArrayList<String> ingredients = new ArrayList<>();
+            ArrayList<String> instructions = new ArrayList<>();
             
             line = scRecipes.nextLine();
-            if (line.isBlank()){
-                continue;
-            }
-            else{
-                
+            
+            if (!line.isBlank()) {
                 name = line;
                 category = scRecipes.nextLine();
                 
@@ -78,6 +75,7 @@ public class DatabaseManager {
                     ingredients.add(scIngredients.next());
                     numIng++;
                 }
+                
                 System.out.println();
                 System.out.println();
                 System.out.println(ingredients);
@@ -94,6 +92,7 @@ public class DatabaseManager {
                     instructions.add(scInstructions.next());
                     numIns++;
                 }
+                
                 scInstructions.close();
                 
                 Recipe temp = new Recipe(name, category, ingredients, instructions);
@@ -101,43 +100,48 @@ public class DatabaseManager {
                 count++;
             }
         }
-        for (int i = 0; i < count; i++){
-            System.out.println(manyRecipes.get(i));
+        
+        for (Recipe recipe : manyRecipes) {
+            System.out.println("Recipe: " + recipe);
         }
         
         scRecipes.close();
+        
         return manyRecipes;
     }
     
-    public void writeUsers(String inFile, User newUser) throws IOException{
-        
+    public void writeUsers(String inFile, User newUser) throws IOException {
         File userFile = new File(inFile);
         FileWriter fwU = new FileWriter(userFile, true);
+        
         fwU.write("\n" + newUser.getEmail() + "\n");
         fwU.write(newUser.getUsername()+ "\n");
         fwU.write(newUser.getPassword()+ "\n");
+        
         fwU.close();
+        
         System.out.println("New User Added To Database.");
     }
     
-    public void writeRecipes(String inFile, Recipe newRecipe) throws IOException{
-        
+    public void writeRecipes(String inFile, Recipe newRecipe) throws IOException {
         File userFile = new File(inFile);
         FileWriter fwR = new FileWriter(userFile, true);
+        
         fwR.write("\n" + newRecipe.getName() + "\n");
         fwR.write(newRecipe.getCategory()+ "\n");
         
-        for(String var:newRecipe.getIngredients()){
+        for (String var : newRecipe.getIngredients()){
             fwR.write(var +", ");
         }
         fwR.write("\n");
         
-        for(String var:newRecipe.getInstructions()){
+        for (String var:newRecipe.getInstructions()){
             fwR.write(var +", ");
         }
         fwR.write("\n");
         
         fwR.close();
+        
         System.out.println("New Recipe Added To Database.");
     }
 }
