@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package rwc.csci4710.recipeapp;
 
 import java.io.FileNotFoundException;
@@ -13,7 +7,8 @@ import java.util.logging.Logger;
 import java.util.*;
 
 /**
- *
+ * AddRecipeFrame.java
+ * 
  * @author liberto_vincent
  * @author gibbons_jared
  */
@@ -22,8 +17,8 @@ public class AddRecipeFrame extends javax.swing.JFrame {
     private static String category;
     private static String ingredients;
     private static String instructions;
-    private static ArrayList<String> arrInstructions = new ArrayList<String>();
-    private static ArrayList<String> arrIngredients = new ArrayList<String>();
+    private static ArrayList<String> arrInstructions = new ArrayList<>();
+    private static ArrayList<String> arrIngredients = new ArrayList<>();
     /**
      * Creates new form AddRecipeFrame
      */
