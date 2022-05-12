@@ -14,7 +14,6 @@ import java.util.Scanner;
  * DatabaseManager.java
  * 
  * @author gibbons_jared
- * @author Matt Wurl
  */
 
 public class DatabaseManager {

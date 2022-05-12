@@ -9,6 +9,7 @@ import java.util.logging.Logger;
  * RecipeList.java
  * 
  * @author liberto_vincent
+ * @author gibbons_jared
  */
 public class RecipeList extends javax.swing.JFrame {
 
