@@ -4,6 +4,7 @@ package rwc.csci4710.recipeapp;
  * User.java
  * 
  * @author liberto_vincent
+ * @author gibbons_jared
  * @author Matt Wurl
  */
 public class User {

@@ -14,7 +14,6 @@ import java.util.regex.Pattern;
  * RegisterFrame.java
  * 
  * @author Gibbons_Jared
- * @author Matt Wurl
  * @author Ortiz_Marcos
  */
 public class RegisterFrame extends javax.swing.JFrame {

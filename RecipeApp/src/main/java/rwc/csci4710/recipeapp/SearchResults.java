@@ -14,6 +14,7 @@ import java.util.logging.Logger;
 /**
  *
  * @author liberto_vincent
+ * @author gibbons_jared
  */
 public class SearchResults extends javax.swing.JFrame {
     private static ArrayList<Recipe> recipeList;
